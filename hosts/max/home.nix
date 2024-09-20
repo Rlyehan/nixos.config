@@ -195,7 +195,7 @@ in
         };
         background = [
           {
-            path = "/home/${username}/Pictures/Wallpapers/Rainnight.jpg";
+            path = "/home/${username}/Pictures/Wallpapers/nix.png";
             blur_passes = 3;
             blur_size = 8;
           }
