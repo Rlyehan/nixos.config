@@ -11,6 +11,6 @@
 
   # Program Options
   browser = "brave";
-  terminal = "alacritty";
+  terminal = "kitty";
   keyboardLayout = "us";
 }

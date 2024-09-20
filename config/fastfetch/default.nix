@@ -48,11 +48,7 @@
               type = "custom";
               format = "┌──────────────────────Software──────────────────────┐";
           }
-          {
-              type = "custom";
-              format = " OS -> ZaneyOS 2.2";
-          }
-          {
+         {
               type = "kernel";
               key = "│ ├ ";
           }
