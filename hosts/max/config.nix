@@ -47,7 +47,7 @@ in
   # Styling Options
   stylix = {
     enable = true;
-    image = ../../config/wallpapers/forest.jpg;
+    image = ../../config/wallpapers/Rainnight.jpg;
     # base16Scheme = {
     #   base00 = "232136";
     #   base01 = "2a273f";
