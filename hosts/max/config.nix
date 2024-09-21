@@ -73,8 +73,8 @@ in
     cursor.size = 24;
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-        name = "JetBrainsMono Nerd Font Mono";
+        package = pkgs.nerdfonts.override { fonts = [ "GeistMono" ]; };
+        name = "GeistMono Nerd Font Mono";
       };
       sansSerif = {
         package = pkgs.montserrat;
@@ -107,6 +107,7 @@ in
 
   # Enable networking
   networking.networkmanager.enable = true;
+  services.tailscale.enable = true;
   networking.hostName = host;
   networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 
@@ -114,18 +115,18 @@ in
   time.timeZone = "Europe/Vienna";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "de_AT.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    LC_ADDRESS = "de_AT.UTF-8";
+    LC_IDENTIFICATION = "de_AT.UTF-8";
+    LC_MEASUREMENT = "de_AT.UTF-8";
+    LC_MONETARY = "de_AT.UTF-8";
+    LC_NAME = "de_AT.UTF-8";
+    LC_NUMERIC = "de_AT.UTF-8";
+    LC_PAPER = "de_AT.UTF-8";
+    LC_TELEPHONE = "de_AT.UTF-8";
+    LC_TIME = "de_AT.UTF-8";
   };
 
   programs = {
@@ -223,69 +224,84 @@ in
     mutableUsers = true;
   };
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   environment.systemPackages = with pkgs; [
-    vim
-    wget
-    killall
-    eza
-    git
-    cmatrix
-    lolcat
-    htop
-    brave
-    libvirt
-    lxqt.lxqt-policykit
-    lm_sensors
-    unzip
-    unrar
-    libnotify
-    v4l-utils
-    ydotool
-    duf
-    ncdu
-    wl-clipboard
-    pciutils
-    ffmpeg
-    socat
-    cowsay
-    ripgrep
-    lshw
-    bat
-    pkg-config
-    meson
-    hyprpicker
-    ninja
-    brightnessctl
-    virt-viewer
-    swappy
-    appimage-run
-    networkmanagerapplet
-    yad
-    inxi
-    playerctl
-    nh
-    nixfmt-rfc-style
-    discord
-    libvirt
-    swww
-    grim
-    slurp
-    file-roller
-    swaynotificationcenter
-    imv
-    mpv
-    gimp
-    pavucontrol
-    tree
-    spotify
-    neovide
-    greetd.tuigreet
+  # Development Tools
+  vim
+  git
+  ripgrep
+  bat
+  meson
+  ninja
+  pkg-config
+  nixfmt-rfc-style
+  nh
+  zed-editor
+  lazygit
+  lazydocker
+
+  # System Utilities
+  wget
+  killall
+  eza
+  unzip
+  unrar
+  tree
+  ncdu
+  duf
+  wl-clipboard
+  ydotool
+  brightnessctl
+  lshw
+  inxi
+  socat
+  appimage-run
+  file-roller
+  yad
+  zoxide
+
+  # System Monitoring
+  htop
+  lm_sensors
+
+  # Networking Tools
+  networkmanagerapplet
+  pciutils
+  tailscale
+
+  # Virtualization Tools
+  libvirt
+  virt-viewer
+
+  # Multimedia Tools
+  mpv
+  pavucontrol
+  playerctl
+  tidal-hifi
+
+
+  # Wayland/Desktop Environment Tools
+  lxqt.lxqt-policykit
+  v4l-utils
+  swappy
+  hyprpicker
+  swaynotificationcenter
+  swww
+  grim
+  slurp
+  greetd.tuigreet
+  imv
+
+  # Web Browsers
+  brave
+
+  # Communication Tools
+  slack
   ];
 
   fonts = {
     packages = with pkgs; [
-      noto-fonts-emoji
-      noto-fonts-cjk
       font-awesome
       material-icons
     ];

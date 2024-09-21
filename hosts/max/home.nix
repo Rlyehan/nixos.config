@@ -25,7 +25,6 @@ in
     ../../config/swaync.nix
     ../../config/waybar.nix
     ../../config/wlogout.nix
-    ../../config/fastfetch
   ];
 
   # Place Files Inside Home Directory
@@ -144,6 +143,13 @@ in
       settings = {
         vim_keys = true;
       };
+    };
+
+    alacritty = {
+      enable = true;
+    };
+    zellij = {
+      enable = true;
     };
     kitty = {
       enable = true;

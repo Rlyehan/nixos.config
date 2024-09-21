@@ -22,8 +22,8 @@ in
       ];
       shell = pkgs.bash;
       ignoreShellProgramCheck = true;
-      packages = with pkgs; [
-      ];
+      # packages = with pkgs; [
+      # ];
     };
   };
 }
