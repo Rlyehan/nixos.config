@@ -138,24 +138,14 @@ in
     alacritty = {
       enable = true;
       settings = {
-        scrollback = {
-          history = 2000;
-        };
-        mouse = {
-          url = {
-            launch = false;
-          };
-          scroll_multiplier = 1;
-        };
-        window = {
-          padding = {
-            x = 4;
-            y = 4;
-          };
+        window.padding = {
+            x = 8;
+            y = 8;
         };
       };
+    };
     kitty = {
-      enable = true;
+      enable = false;
       package = pkgs.kitty;
       settings = {
         scrollback_lines = 2000;
