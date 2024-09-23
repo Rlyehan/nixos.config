@@ -135,14 +135,25 @@ in
         vim_keys = true;
       };
     };
-
     alacritty = {
       enable = true;
-    };
-    zellij = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+      settings = {
+        scrollback = {
+          history = 2000;
+        };
+        mouse = {
+          url = {
+            launch = false;
+          };
+          scroll_multiplier = 1;
+        };
+        window = {
+          padding = {
+            x = 4;
+            y = 4;
+          };
+        };
+      };
     kitty = {
       enable = true;
       package = pkgs.kitty;
@@ -158,6 +169,10 @@ in
         active_tab_font_style   bold
         inactive_tab_font_style bold
       '';
+    };
+    zellij = {
+      enable = true;
+      enableZshIntegration = true;
     };
     direnv = {
         enable = true;
