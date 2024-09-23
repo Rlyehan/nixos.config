@@ -7,11 +7,8 @@
 }:
 
 let
-  inherit (import ../hosts/${host}/variables.nix)
-    browser
-    terminal
+    inherit (import ../hosts/${host}/variables.nix)
     extraMonitorSettings
-    keyboardLayout
     ;
 in
 with lib;
@@ -58,7 +55,7 @@ with lib;
             col.inactive_border = rgb(${config.stylix.base16Scheme.base01})
           }
           input {
-            kb_layout = ${keyboardLayout}
+            kb_layout = us
             kb_options = grp:alt_shift_toggle
             kb_options = caps:super
             follow_mouse = 1
@@ -126,18 +123,14 @@ with lib;
             pseudotile = true
             preserve_split = true
           }
-          bind = ${modifier},Return,exec,${terminal}
+          bind = ${modifier},Return,exec,alacritty
           bind = ${modifier}SHIFT,Return,exec,rofi-launcher
           bind = ${modifier}SHIFT,N,exec,swaync-client -rs
-          bind = ${modifier},W,exec,${browser}
+          bind = ${modifier},W,exec,brave
           bind = ${modifier},S,exec,screenshootin
-          bind = ${modifier},D,exec,discord
-          bind = ${modifier},O,exec,obs
           bind = ${modifier},C,exec,hyprpicker -a
-          bind = ${modifier},G,exec,gimp
-          bind = ${modifier}SHIFT,G,exec,godot4
           bind = ${modifier},T,exec,thunar
-          bind = ${modifier},M,exec,spotify
+          bind = ${modifier},M,exec,tidal
           bind = ${modifier},Q,killactive,
           bind = ${modifier},P,pseudo,
           bind = ${modifier}SHIFT,I,togglesplit,

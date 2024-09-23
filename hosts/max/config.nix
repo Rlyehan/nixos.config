@@ -6,9 +6,6 @@
   options,
   ...
 }:
-let
-  inherit (import ./variables.nix) keyboardLayout;
-in
 {
   imports = [
     ./hardware.nix
@@ -340,7 +337,7 @@ in
     enable = true;
   };
 
-  console.keyMap = "${keyboardLayout}";
+  console.keyMap = "us";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
