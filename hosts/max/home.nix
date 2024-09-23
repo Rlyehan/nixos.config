@@ -95,7 +95,6 @@ in
   # Scripts
   home.packages = [
     (import ../../scripts/task-waybar.nix { inherit pkgs; })
-    (import ../../scripts/squirtle.nix { inherit pkgs; })
     (import ../../scripts/nvidia-offload.nix { inherit pkgs; })
     (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
     (import ../../scripts/screenshootin.nix { inherit pkgs; })
