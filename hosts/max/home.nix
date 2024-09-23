@@ -141,6 +141,7 @@ in
     };
     zellij = {
       enable = true;
+      enableZshIntegration = true;
     };
     kitty = {
       enable = true;
@@ -158,13 +159,20 @@ in
         inactive_tab_font_style bold
       '';
     };
-     starship = {
-            enable = true;
-            package = pkgs.starship;
+    direnv = {
+        enable = true;
+        enableZshIntegration = true;
+        nix-direnv.enable = true;
+    };
+    starship = {
+        enable = true;
+        package = pkgs.starship;
+        enableZshIntegration = true;
      };
-    bash = {
+    zsh = {
       enable = true;
       enableCompletion = true;
+      syntaxHighlighting.enable = true;
       profileExtra = ''
         #if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
         #  exec Hyprland
@@ -178,6 +186,8 @@ in
         ls = "eza --icons";
         ll = "eza -lh --icons --grid --group-directories-first";
         la = "eza -lah --icons --grid --group-directories-first";
+        lg = "lazygit";
+        ld = "lazydocker";
       };
     };
     home-manager.enable = true;

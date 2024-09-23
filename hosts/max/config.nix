@@ -240,6 +240,7 @@ in
   zed-editor
   lazygit
   lazydocker
+  awscli
 
   # System Utilities
   wget
@@ -260,6 +261,7 @@ in
   file-roller
   yad
   zoxide
+  gnupg
 
   # System Monitoring
   htop
