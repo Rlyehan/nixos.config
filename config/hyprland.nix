@@ -7,9 +7,7 @@
 }:
 
 let
-    inherit (import ../hosts/${host}/variables.nix)
-    extraMonitorSettings
-    ;
+    extraMonitorSettings = "";
 in
 with lib;
 {

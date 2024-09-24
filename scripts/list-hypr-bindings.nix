@@ -1,8 +1,5 @@
 { pkgs, host, ... }:
 
-let
-  inherit (import ../hosts/${host}/variables.nix) terminal browser;
-in
 pkgs.writeShellScriptBin "list-hypr-bindings" ''
   yad --width=800 --height=650 \
   --center \
@@ -16,11 +13,11 @@ pkgs.writeShellScriptBin "list-hypr-bindings" ''
   --timeout=90 \
   --timeout-indicator=right \
   " = Windows/Super/CAPS LOCK" "Modifier Key, used for keybindings" "Doesn't really execute anything by itself." \
-  " + ENTER" "Terminal" "${terminal}" \
+  " + ENTER" "Terminal" "alacritty" \
   " + SHIFT + ENTER" "App Launcher" "rofi" \
   " + Q" "Kill Focused Window" "killactive" \
   " + SHIFT + N" "Reload SwayNC Styling" "swaync-client -rs" \
-  " + W" "Launch Web Browser" "${browser}" \
+  " + W" "Launch Web Browser" "brave" \
   " + S" "Take Screenshot" "screenshootin" \
   " + D" "Launch Discord" "discord" \
   " + O" "Launch OBS" "obs" \

@@ -5,7 +5,8 @@
   ...
 }:
 let
-  inherit (import ./variables.nix) gitUsername gitEmail;
+  gitUsername = "Rlyehan";
+  gitEmail = "maximilian.hub@proton.me";
 in
 {
   # Home Manager Settings
