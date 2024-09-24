@@ -15,7 +15,7 @@
   outputs =
     { nixpkgs, home-manager, ... }@inputs:
     let
-      system = "aarch64-linux";
+      system = ["aarch64-linux" "x86_64-linux"];
       host = "max";
       username = "max";
     in

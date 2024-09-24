@@ -279,6 +279,7 @@ in
             symbol = " ";
         };
      };
+    };
     zsh = {
       enable = true;
       enableCompletion = true;
