@@ -25,6 +25,8 @@ in
     ../../config/waybar.nix
     ../../config/wlogout.nix
     ../../config/stylix.nix
+    ../../config/starship.nix
+    ../../config/zsh.nix
   ];
 
   # Place Files Inside Home Directory
@@ -48,8 +50,6 @@ in
     early_exit=true
     fill_shape=false
   '';
-
-
 
   # Install & Configure Git
   programs.git = {
@@ -139,6 +139,7 @@ in
         vim_keys = true;
       };
     };
+
     alacritty = {
       enable = true;
       settings = {
@@ -148,98 +149,18 @@ in
         };
       };
     };
+
     zellij = {
       enable = true;
       enableZshIntegration = true;
     };
+
     direnv = {
         enable = true;
         enableZshIntegration = true;
         nix-direnv.enable = true;
     };
-    starship = {
-        enable = true;
-        package = pkgs.starship;
-        enableZshIntegration = true;
-        settings = {
-        add_newline = false;
-        c = {
-            symbol = " ";
-        };
-        directory = {
-            read_only = " 󰌾";
-        };
-        docker_context = {
-            symbol = " ";
-        };
-        git_branch = {
-            symbol = " ";
-        };
-        golang = {
-            symbol = " ";
-        };
-        hg_branch = {
-            symbol = " ";
-        };
-        hostname = {
-            ssh_symbol = " ";
-        };
-        lua = {
-            symbol = " ";
-        };
-        memory_usage = {
-            symbol = "󰍛 ";
-        };
-        meson = {
-            symbol = "󰔷 ";
-        };
-        nix_shell = {
-            symbol = " ";
-        };
-        nodejs = {
-            symbol = " ";
-        };
-        ocaml = {
-            symbol = " ";
-        };
-        package = {
-            symbol = "󰏗 ";
-        };
-        python = {
-            symbol = " ";
-        };
-        rust = {
-            symbol = " ";
-        };
-        swift = {
-            symbol = " ";
-        };
-        zig = {
-            symbol = " ";
-        };
-     };
-    };
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      syntaxHighlighting.enable = true;
-      profileExtra = ''
-        #if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        #  exec Hyprland
-        #fi
-      '';
-      shellAliases = {
-        fr = "nh os switch --hostname ${host} /home/${username}/zaneyos";
-        fu = "nh os switch --hostname ${host} --update /home/${username}/zaneyos";
-        ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
-        cat = "bat";
-        ls = "eza --icons";
-        ll = "eza -lh --icons --grid --group-directories-first";
-        la = "eza -lah --icons --grid --group-directories-first";
-        lg = "lazygit";
-        ld = "lazydocker";
-      };
-    };
+
     home-manager.enable = true;
     hyprlock = {
       enable = true;
