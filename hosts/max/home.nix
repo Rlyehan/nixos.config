@@ -24,6 +24,7 @@ in
     ../../config/swaync.nix
     ../../config/waybar.nix
     ../../config/wlogout.nix
+    ../../config/stylix.nix
   ];
 
   # Place Files Inside Home Directory
@@ -48,54 +49,7 @@ in
     fill_shape=false
   '';
 
-  # Styling Options
-  stylix = {
-    enable = true;
-    image = ../../config/wallpapers/nix.png;
-    # base16Scheme = {
-    #   base00 = "232136";
-    #   base01 = "2a273f";
-    #   base02 = "393552";
-    #   base03 = "6e6a86";
-    #   base04 = "908caa";
-    #   base05 = "e0def4";
-    #   base06 = "e0def4";
-    #   base07 = "56526e";
-    #   base08 = "eb6f92";
-    #   base09 = "f6c177";
-    #   base0A = "ea9a97";
-    #   base0B = "3e8fb0";
-    #   base0C = "9ccfd8";
-    #   base0D = "c4a7e7";
-    #   base0E = "f6c177";
-    #   base0F = "56526e";
-    # };
-    polarity = "dark";
-    opacity.terminal = 0.8;
-    cursor.package = pkgs.bibata-cursors;
-    cursor.name = "Bibata-Modern-Ice";
-    cursor.size = 24;
-    fonts = {
-      monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "GeistMono" ]; };
-        name = "GeistMono Nerd Font Mono";
-      };
-      sansSerif = {
-        package = pkgs.montserrat;
-        name = "Montserrat";
-      };
-      serif = {
-        package = pkgs.montserrat;
-        name = "Montserrat";
-      };
-      sizes = {
-        applications = 12;
-        terminal = 15;
-        desktop = 11;
-        popups = 12;
-      };
-    };
-  };
+
 
   # Install & Configure Git
   programs.git = {
@@ -193,22 +147,6 @@ in
             y = 8;
         };
       };
-    };
-    kitty = {
-      enable = false;
-      package = pkgs.kitty;
-      settings = {
-        scrollback_lines = 2000;
-        wheel_scroll_min_lines = 1;
-        window_padding_width = 4;
-        confirm_os_window_close = 0;
-      };
-      extraConfig = ''
-        tab_bar_style fade
-        tab_fade 1
-        active_tab_font_style   bold
-        inactive_tab_font_style bold
-      '';
     };
     zellij = {
       enable = true;
