@@ -44,9 +44,9 @@ with lib;
           monitor=,preferred,auto,1
           ${extraMonitorSettings}
           general {
-            gaps_in = 6
-            gaps_out = 8
-            border_size = 2
+            gaps_in = 4
+            gaps_out = 4
+            border_size = 1
             layout = dwindle
             resize_on_border = true
             col.active_border = rgb(${config.stylix.base16Scheme.base08}) rgb(${config.stylix.base16Scheme.base0C}) 45deg
@@ -67,13 +67,9 @@ with lib;
           }
           windowrule = noborder,^(wofi)$
           windowrule = center,^(wofi)$
-          windowrule = center,^(steam)$
           windowrule = float, nm-connection-editor|blueman-manager
           windowrule = float, swayimg|vlc|Viewnior|pavucontrol
           windowrule = float, nwg-look|qt5ct|mpv
-          windowrule = float, zoom
-          windowrulev2 = stayfocused, title:^()$,class:^(steam)$
-          windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
           windowrulev2 = opacity 0.9 0.7, class:^(Brave)$
           windowrulev2 = opacity 0.9 0.7, class:^(thunar)$
           gestures {
@@ -100,14 +96,14 @@ with lib;
             animation = workspaces, 1, 5, wind
           }
           decoration {
-            rounding = 10
+            rounding = 8
             drop_shadow = true
-            shadow_range = 4
-            shadow_render_power = 3
+            shadow_range = 3
+            shadow_render_power = 2
             col.shadow = rgba(1a1a1aee)
             blur {
                 enabled = true
-                size = 5
+                size = 2
                 passes = 3
                 new_optimizations = on
                 ignore_opacity = off
@@ -123,14 +119,10 @@ with lib;
           }
           bind = ${modifier},Return,exec,alacritty
           bind = ${modifier}SHIFT,Return,exec,rofi-launcher
-          bind = ${modifier}SHIFT,N,exec,swaync-client -rs
           bind = ${modifier},W,exec,brave
           bind = ${modifier},S,exec,screenshootin
-          bind = ${modifier},C,exec,hyprpicker -a
-          bind = ${modifier},T,exec,thunar
-          bind = ${modifier},M,exec,tidal
+          bind = ${modifier},T,exec,thunarn
           bind = ${modifier},Q,killactive,
-          bind = ${modifier},P,pseudo,
           bind = ${modifier}SHIFT,I,togglesplit,
           bind = ${modifier},F,fullscreen,
           bind = ${modifier}SHIFT,F,togglefloating,
@@ -161,8 +153,6 @@ with lib;
           bind = ${modifier},8,workspace,8
           bind = ${modifier},9,workspace,9
           bind = ${modifier},0,workspace,10
-          bind = ${modifier}SHIFT,SPACE,movetoworkspace,special
-          bind = ${modifier},SPACE,togglespecialworkspace
           bind = ${modifier}SHIFT,1,movetoworkspace,1
           bind = ${modifier}SHIFT,2,movetoworkspace,2
           bind = ${modifier}SHIFT,3,movetoworkspace,3
@@ -173,10 +163,6 @@ with lib;
           bind = ${modifier}SHIFT,8,movetoworkspace,8
           bind = ${modifier}SHIFT,9,movetoworkspace,9
           bind = ${modifier}SHIFT,0,movetoworkspace,10
-          bind = ${modifier}CONTROL,right,workspace,e+1
-          bind = ${modifier}CONTROL,left,workspace,e-1
-          bind = ${modifier},mouse_down,workspace, e+1
-          bind = ${modifier},mouse_up,workspace, e-1
           bindm = ${modifier},mouse:272,movewindow
           bindm = ${modifier},mouse:273,resizewindow
           bind = ALT,Tab,cyclenext

@@ -62,7 +62,7 @@
   '';
   home.file.".config/swaync/style.css".text = ''
     * {
-      font-family: GeistMono Nerd Font Mono;
+      font-family: GeistMono NF;
       font-weight: bold;
     }
     .control-center .notification-row:focus,

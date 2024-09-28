@@ -16,7 +16,6 @@ in
 
   # Import Program Configurations
   imports = [
-    ../../config/fastfetch
     ../../config/hyprland.nix
     ../../config/neovim.nix
     ../../config/rofi/rofi.nix
