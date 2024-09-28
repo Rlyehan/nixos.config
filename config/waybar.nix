@@ -180,7 +180,7 @@ with lib;
       ''
         * {
           font-family: GeistMono Nerd Font Mono;
-          font-size: 16px;
+          font-size: 14px;
           border-radius: 0px;
           border: none;
           min-height: 0px;
@@ -239,15 +239,15 @@ with lib;
           padding: 0px 18px;
           background: #${config.stylix.base16Scheme.base04};
           color: #${config.stylix.base16Scheme.base00};
-          border-radius: 24px 10px 24px 10px;
+          border-radius: 5px 5px 5px 5px;
         }
         #custom-startmenu {
           color: #${config.stylix.base16Scheme.base0B};
           background: #${config.stylix.base16Scheme.base02};
-          font-size: 28px;
-          margin: 0px;
-          padding: 0px 30px 0px 15px;
-          border-radius: 0px 0px 40px 0px;
+          font-size: 32px;
+          margin: 5px;
+          padding: 0px 30px 0px 30px;
+          border-radius: 5px 5px 5px 5px;
         }
         #custom-hyprbindings, #network, #battery,
         #custom-notification, #tray, #custom-exit {
@@ -256,16 +256,16 @@ with lib;
           color: #${config.stylix.base16Scheme.base00};
           margin: 4px 0px;
           margin-right: 7px;
-          border-radius: 10px 24px 10px 24px;
+          border-radius: 5px 5px 5px 5px;
           padding: 0px 18px;
         }
         #clock {
           font-weight: bold;
           color: #0D0E15;
           background: linear-gradient(90deg, #${config.stylix.base16Scheme.base0E}, #${config.stylix.base16Scheme.base0C});
-          margin: 0px;
-          padding: 0px 15px 0px 30px;
-          border-radius: 0px 0px 0px 40px;
+          margin: 5px;
+          padding: 0px 15px 0px 15px;
+          border-radius: 5px 5px 5px 5px;
         }
       ''
     ];
