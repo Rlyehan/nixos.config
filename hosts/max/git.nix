@@ -32,8 +32,6 @@ programs.git = {
 
     credential = {
       helper = "libsecret";
-      "https://github.com".helper = "!/usr/bin/gh auth git-credential";
-      "https://gist.github.com".helper = "!/usr/bin/gh auth git-credential";
     };
 
     pull.rebase = true;
@@ -106,27 +104,9 @@ programs.git = {
       stash-all = "stash save --include-untracked";
       push-lease = "push --force-with-lease";
       lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-      lga = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all";
-      ls = "log --pretty=format:'%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]' --decorate";
-      ll = "log --pretty=format:'%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]' --decorate --numstat";
-      lnc = "log --pretty=format:'%h %s [%cn]'";
       ld = "log --pretty=format:'%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]' --decorate --date=relative";
-      le = "log --oneline --decorate";
-      filelog = "log -u";
-      fl = "log -u";
-      dl = "!git ll -1";
-      dlc = "diff --cached HEAD^";
-      dr  = "diff --staged";
-      diff-staged = "diff --staged";
       dff = "diff --word-diff";
-      grep-group = "grep --break --heading --line-number";
-      find = "!git ls-files | grep -i";
-      f = "!git ls-files | grep -i";
-      gr = "grep -Ii";
-      gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f";
-      la = "!git config -l | grep alias | cut -c 7-";
       review-local = "!git lg @{push}..";
-      recent-branches = "!git for-each-ref --sort=-committerdate refs/heads/ --format='%(authordate:short) %(color:red)%(objectname:short) %(color:yellow)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset))' --count=10";
     };
   };
 }

@@ -19,6 +19,7 @@ podman-compose
 podman-tui
 git-extras
 git-lfs
+diff-so-fancy
 
 # System Utilities
 wget
