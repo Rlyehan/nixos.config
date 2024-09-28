@@ -27,6 +27,7 @@ in
     ../../config/stylix.nix
     ../../config/starship.nix
     ../../config/zsh.nix
+    ./git.nix
   ];
 
   # Place Files Inside Home Directory
@@ -50,13 +51,6 @@ in
     early_exit=true
     fill_shape=false
   '';
-
-  # Install & Configure Git
-  programs.git = {
-    enable = true;
-    userName = "${gitUsername}";
-    userEmail = "${gitEmail}";
-  };
 
   # Create XDG Dirs
   xdg = {
