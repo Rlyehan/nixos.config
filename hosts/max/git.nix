@@ -26,7 +26,7 @@
         trustctime = false;
         autocrlf = "input";
         untrackedCache = true;
-        pager = "delta";
+        pager = "diff-so-fancy | less --tabs=4 -RFX";
         ignorecase = false;
       };
 
@@ -79,13 +79,6 @@
         };
       };
 
-      delta = {
-        navigate = true;
-        light = false;
-        side-by-side = true;
-        line-numbers = true;
-      };
-
       interactive = {
         diffFilter = "delta --color-only";
       };
@@ -113,8 +106,6 @@
       push-lease = "push --force-with-lease";
       lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       lga = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all";
-      l = "log --oneline --decorate --graph";
-      la = "log --oneline --decorate --graph --all";
       ls = "log --pretty=format:'%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]' --decorate";
       ll = "log --pretty=format:'%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]' --decorate --numstat";
       lnc = "log --pretty=format:'%h %s [%cn]'";

@@ -17,7 +17,7 @@ lazydocker
 awscli
 podman-compose
 podman-tui
-git-delta
+git-extras
 git-lfs
 
 # System Utilities
