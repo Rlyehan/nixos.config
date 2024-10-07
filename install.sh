@@ -20,4 +20,10 @@ NIX_CONFIG="experimental-features = nix-command flakes"
 
 echo "-----"
 
-sudo nixos-rebuild switch --flake ~/zaneyos/#${hostName}
+sudo nixos-rebuild switch --flake ~/nixos.config/#${hostName}
+
+echo "-----"
+echo "Installing flatpaks"
+flatpak install flathub com.github.IsmaelMartinez.teams_for_linux -y
+flatpak install flathub org.keepassxc.KeePassXC -y
+flatpak install flathub org.libreoffice.LibreOffice -y
