@@ -11,7 +11,7 @@ programs.git = {
       condition = "gitdir:~/work/";
       contents = {
         user = {
-          email = "replace.me";  # Replace with your work email
+          email = "maximilian.huber@5gsystems.com";
         };
       };
     }

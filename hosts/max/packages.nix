@@ -13,13 +13,13 @@ nixfmt-rfc-style
 nh
 zed-editor
 lazygit
-lazydocker
 awscli
 podman-compose
 podman-tui
 git-extras
 git-lfs
 diff-so-fancy
+jetbrains-toolbox
 
 # System Utilities
 wget
@@ -79,4 +79,7 @@ brave
 
 # Communication Tools
 slack
+
+# Notetacking Apps
+    folio
 ]

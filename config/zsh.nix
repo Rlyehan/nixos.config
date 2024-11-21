@@ -16,9 +16,8 @@ programs.zsh = {
     ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     cat = "bat";
     ls = "eza --icons";
-    la = "eza -lah --icons --grid --group-directories-first";
+    la = "eza -l -o -h --icons --group-directories-first";
     lg = "lazygit";
-    ld = "lazydocker";
     teams = "flatpak run com.github.IsmaelMartinez.teams_for_linux";
     keepass = "flatpak run org.keepassxc.KeePassXC";
   };

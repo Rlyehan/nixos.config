@@ -7,7 +7,7 @@
 }:
 
 let
-    extraMonitorSettings = "";
+    extraMonitorSettings = "monitor = DP-8, 5120x2160, 1920x0, 1.0";
 in
 with lib;
 {
