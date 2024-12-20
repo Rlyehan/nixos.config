@@ -24,7 +24,7 @@
       }
       {
         "label" = "suspend";
-        "action" = "sleep 1; systemctl suspend";
+        "action" = "sleep 1; systemctl suspend && hyprlock";
         "text" = "Suspend";
         "keybind" = "u";
       }
@@ -36,7 +36,7 @@
       }
       {
         "label" = "hibernate";
-        "action" = "sleep 1; systemctl hibernate";
+          "action" = "sleep 1; systemctl hibernate && hyprlock";
         "text" = "Hibernate";
         "keybind" = "h";
       }

@@ -121,7 +121,10 @@ with lib;
           bind = ${modifier}SHIFT,Return,exec,rofi-launcher
           bind = ${modifier},W,exec,brave
           bind = ${modifier},S,exec,screenshootin
+          bind = ${modifier}SHIFT, S, exec,slack
           bind = ${modifier},T,exec,thunarn
+          bind = ${modifier}SHIFT, T, exec, teams
+          bind = ${modifier}, j, exec, jetbtains-toolbox
           bind = ${modifier},Q,killactive,
           bind = ${modifier}SHIFT,I,togglesplit,
           bind = ${modifier},F,fullscreen,

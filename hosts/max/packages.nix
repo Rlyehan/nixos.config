@@ -21,6 +21,11 @@ git-lfs
 diff-so-fancy
 jetbrains-toolbox
 
+#Languages
+rustup #Rust
+uv #Python
+bun #JS
+
 # System Utilities
 wget
 killall
@@ -76,10 +81,11 @@ imv
 
 # Web Browsers
 brave
+firefox
 
 # Communication Tools
 slack
 
-# Notetacking Apps
-    folio
+# Extra Tools
+obsidian
 ]

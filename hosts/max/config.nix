@@ -233,6 +233,8 @@
     '';
   };
 
+  security.pam.services.hyprlock = {};
+
   # Optimization settings and garbage collection automation
   nix = {
     settings = {

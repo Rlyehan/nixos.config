@@ -37,7 +37,7 @@ stylix = {
   cursor.size = 24;
   fonts = {
     monospace = {
-      package = pkgs.nerdfonts.override { fonts = [ "GeistMono" ]; };
+      package = pkgs.nerd-fonts.geist-mono;
       name = "GeistMono Nerd Font Mono";
     };
     sansSerif = {
