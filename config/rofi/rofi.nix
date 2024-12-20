@@ -22,12 +22,12 @@
         in
         {
           "*" = {
-            bg = mkLiteral "#${config.stylix.base16Scheme.base00}";
+            bg = mkLiteral "#2f302f";
             bg-alt = mkLiteral "#${config.stylix.base16Scheme.base09}";
             foreground = mkLiteral "#${config.stylix.base16Scheme.base01}";
             selected = mkLiteral "#${config.stylix.base16Scheme.base08}";
             active = mkLiteral "#${config.stylix.base16Scheme.base0B}";
-            text-selected = mkLiteral "#${config.stylix.base16Scheme.base00}";
+            text-selected = mkLiteral "#2f302f";
             text-color = mkLiteral "#${config.stylix.base16Scheme.base05}";
             border-color = mkLiteral "#${config.stylix.base16Scheme.base0F}";
             urgent = mkLiteral "#${config.stylix.base16Scheme.base0E}";
