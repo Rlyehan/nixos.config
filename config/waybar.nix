@@ -238,7 +238,7 @@ with lib;
           margin: 4px 0px;
           margin-left: 7px;
           padding: 0px 18px;
-          background: #2f302f;
+          background: #c4c5c5;
           color: #2f302f;
           border-radius: 5px 5px 5px 5px;
         }
