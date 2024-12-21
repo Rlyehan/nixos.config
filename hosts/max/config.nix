@@ -107,19 +107,19 @@
 
   environment.systemPackages = pkgs.callPackage ./packages.nix {};
 
-  fonts = {
-    packages = with pkgs; [
-      font-awesome
-      material-icons
-    ];
-    fontconfig.defaultFonts = {
-    monospace = {
-      package = pkgs.nerdfonts.override { fonts = [ "GeistMono" ]; };
-    };
-    #sansSerif = [pkgs.montserrat];
-    #serif = [ pkgs.montserrat ];
-    };
+fonts = {
+  packages = with pkgs; [
+    font-awesome
+    material-icons
+    (nerdfonts.override { fonts = [ "GeistMono" ]; })
+    montserrat
+  ];
+  fontconfig.defaultFonts = {
+    monospace = [ "GeistMono Nerd Font Mono" ];
+    sansSerif = [ "Montserrat" ];
+    serif = [ "Montserrat" ];
   };
+};
 
 
   # Extra Portal Configuration
