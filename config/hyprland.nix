@@ -97,7 +97,7 @@ with lib;
           }
           decoration {
             rounding = 
-            shadowd {
+            shadow {
               enabled = true
               range = 3
               render_power = 2
