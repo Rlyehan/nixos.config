@@ -96,11 +96,13 @@ with lib;
             animation = workspaces, 1, 5, wind
           }
           decoration {
-            rounding = 8
-            drop_shadow = true
-            shadow_range = 3
-            shadow_render_power = 2
-            col.shadow = rgba(1a1a1aee)
+            rounding = 
+            shadowd {
+              enabled = true
+              range = 3
+              render_power = 2
+              color = rgba(1a1a1aee)
+              }
             blur {
                 enabled = true
                 size = 2
