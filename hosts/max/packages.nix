@@ -81,5 +81,5 @@ brave
 slack
 
 # Notetacking Apps
-    folio
+  obsidian
 ]
