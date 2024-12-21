@@ -24,11 +24,11 @@
           "*" = {
             bg = mkLiteral "#2f302f";
             bg-alt = mkLiteral "#${config.stylix.base16Scheme.base09}";
-            foreground = mkLiteral "#${config.stylix.base16Scheme.base01}";
-            selected = mkLiteral "#${config.stylix.base16Scheme.base08}";
-            active = mkLiteral "#${config.stylix.base16Scheme.base0B}";
+            foreground = mkLiteral "#354547";
+            selected = mkLiteral "#4e9ba7";
+            active = mkLiteral "#6998b4";
             text-selected = mkLiteral "#2f302f";
-            text-color = mkLiteral "#${config.stylix.base16Scheme.base05}";
+            text-color = mkLiteral "#e9eaeb";
             border-color = mkLiteral "#${config.stylix.base16Scheme.base0F}";
             urgent = mkLiteral "#${config.stylix.base16Scheme.base0E}";
           };

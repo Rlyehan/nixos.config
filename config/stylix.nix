@@ -10,7 +10,7 @@
 {
 # Styling Options
 stylix = {
-  enable = true;
+  enable = false;
   image = ./wallpapers/nix.png;
   polarity = "dark";
   opacity.terminal = 0.8;

@@ -84,7 +84,7 @@
       background: #2f302f;
       padding: 10px;
       border-radius: 5px;
-      border: 2px solid #${config.stylix.base16Scheme.base0D};
+      border: 2px solid #4b9bac;
       margin: 0;
     }
     .notification-default-action {
@@ -93,7 +93,7 @@
       border-radius: 5px;
     }
     .close-button {
-      background: #${config.stylix.base16Scheme.base08};
+      background: #4e9ba7;
       color: #2f302f;
       text-shadow: none;
       padding: 0;
@@ -103,19 +103,19 @@
     }
     .close-button:hover {
       box-shadow: none;
-      background: #${config.stylix.base16Scheme.base0D};
+      background: #4b9bac;
       transition: all .15s ease-in-out;
       border: none
     }
     .notification-action {
-      border: 2px solid #${config.stylix.base16Scheme.base0D};
+      border: 2px solid #4b9bac;
       border-top: none;
       border-radius: 5px;
     }
     .notification-default-action:hover,
     .notification-action:hover {
-      color: #${config.stylix.base16Scheme.base0B};
-      background: #${config.stylix.base16Scheme.base0B}
+      color: #6998b4;
+      background: #6998b4;
     }
     .notification-default-action {
       border-radius: 5px;
@@ -138,8 +138,8 @@
     }
     .inline-reply-entry {
       background: #2f302f;
-      color: #${config.stylix.base16Scheme.base05};
-      caret-color: #${config.stylix.base16Scheme.base05};
+      color: #e9eaeb;
+      caret-color: #e9eaeb;
       border: 1px solid #${config.stylix.base16Scheme.base09};
       border-radius: 5px
     }
@@ -148,7 +148,7 @@
       background: #2f302f;
       border: 1px solid #${config.stylix.base16Scheme.base09};
       border-radius: 5px;
-      color: #${config.stylix.base16Scheme.base05}
+      color: #e9eaeb;
     }
     .inline-reply-button:disabled {
       background: initial;
@@ -160,7 +160,7 @@
     }
     .body-image {
       margin-top: 6px;
-      background-color: #${config.stylix.base16Scheme.base05};
+      background-color: #e9eaeb;
       border-radius: 5px
     }
     .summary {
@@ -174,7 +174,7 @@
       font-size: 16px;
       font-weight: 700;
       background: transparent;
-      color: #${config.stylix.base16Scheme.base05};
+      color: #e9eaeb;
       text-shadow: none;
       margin-right: 18px
     }
@@ -182,12 +182,12 @@
       font-size: 15px;
       font-weight: 400;
       background: transparent;
-      color: #${config.stylix.base16Scheme.base05};
+      color: #e9eaeb;
       text-shadow: none
     }
     .control-center {
       background: #2f302f;
-      border: 2px solid #${config.stylix.base16Scheme.base0C};
+      border: 2px solid #4e9ba7;
       border-radius: 5px;
     }
     .control-center-list {
@@ -203,7 +203,7 @@
       background: alpha(black, 0)
     }
     .widget-title {
-      color: #${config.stylix.base16Scheme.base0B};
+      color: #6998b4;
       background: #2f302f;
       padding: 5px 10px;
       margin: 10px 10px 5px 10px;
@@ -212,14 +212,14 @@
     }
     .widget-title>button {
       font-size: 1rem;
-      color: #${config.stylix.base16Scheme.base05};
+      color: #e9eaeb;
       text-shadow: none;
       background: #2f302f;
       box-shadow: none;
       border-radius: 5px;
     }
     .widget-title>button:hover {
-      background: #${config.stylix.base16Scheme.base08};
+      background: #4e9ba7;
       color: #2f302f;
     }
     .widget-dnd {
@@ -228,16 +228,16 @@
       margin: 10px 10px 5px 10px;
       border-radius: 5px;
       font-size: large;
-      color: #${config.stylix.base16Scheme.base0B};
+      color: #6998b4;
     }
     .widget-dnd>switch {
       border-radius: 5px;
-      /* border: 1px solid #${config.stylix.base16Scheme.base0B}; */
-      background: #${config.stylix.base16Scheme.base0B};
+      /* border: 1px solid #6998b4; */
+      background: #6998b4;
     }
     .widget-dnd>switch:checked {
-      background: #${config.stylix.base16Scheme.base08};
-      border: 1px solid #${config.stylix.base16Scheme.base08};
+      background: #4e9ba7;
+      border: 1px solid #4e9ba7;
     }
     .widget-dnd>switch slider {
       background: #2f302f;
@@ -252,10 +252,10 @@
     }
     .widget-label>label {
       font-size: 1rem;
-      color: #${config.stylix.base16Scheme.base05};
+      color: #e9eaeb;
     }
     .widget-mpris {
-      color: #${config.stylix.base16Scheme.base05};
+      color: #e9eaeb;
       padding: 5px 10px;
       margin: 10px 10px 5px 10px;
       border-radius: 5px;
@@ -283,15 +283,15 @@
       background: transparent
     }
     .widget-volume {
-      background: #${config.stylix.base16Scheme.base01};
+      background: #354547;
       padding: 5px;
       margin: 10px 10px 5px 10px;
       border-radius: 5px;
       font-size: x-large;
-      color: #${config.stylix.base16Scheme.base05};
+      color: #e9eaeb;
     }
     .widget-volume>box>button {
-      background: #${config.stylix.base16Scheme.base0B};
+      background: #6998b4;
       border: none
     }
     .per-app-volume {
@@ -301,12 +301,12 @@
       border-radius: 5px;
     }
     .widget-backlight {
-      background: #${config.stylix.base16Scheme.base01};
+      background: #354547;
       padding: 5px;
       margin: 10px 10px 5px 10px;
       border-radius: 5px;
       font-size: x-large;
-      color: #${config.stylix.base16Scheme.base05}
+      color: #e9eaeb;
     }
   '';
 }
