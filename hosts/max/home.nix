@@ -23,7 +23,6 @@ in
     ../../config/swaync.nix
     ../../config/waybar.nix
     ../../config/wlogout.nix
-    ../../config/stylix.nix
     ../../config/starship.nix
     ../../config/zsh.nix
     ./git.nix

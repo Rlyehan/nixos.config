@@ -29,8 +29,8 @@
             active = mkLiteral "#6998b4";
             text-selected = mkLiteral "#2f302f";
             text-color = mkLiteral "#e9eaeb";
-            border-color = mkLiteral "#${config.stylix.base16Scheme.base0F}";
-            urgent = mkLiteral "#${config.stylix.base16Scheme.base0E}";
+            border-color = mkLiteral "#4b9bac";
+            urgent = mkLiteral "#4b9bac";
           };
           "window" = {
             width = mkLiteral "50%";
