@@ -113,7 +113,7 @@
       font-awesome
       material-icons
     ];
-    fontsconfig.defaultFonts = {
+    fontconfig.defaultFonts = {
     monospace = {
       package = pkgs.nerdfonts.override { fonts = [ "GeistMono" ]; };
       name = "GeistMono Nerd Font Mono";
