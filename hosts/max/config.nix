@@ -115,15 +115,12 @@
     fontconfig.defaultFonts = {
     monospace = {
       package = pkgs.nerdfonts.override { fonts = [ "GeistMono" ]; };
-      name = "GeistMono Nerd Font Mono";
     };
     sansSerif = {
       package = pkgs.montserrat;
-      name = "Montserrat";
     };
     serif = {
       package = pkgs.montserrat;
-      name = "Montserrat";
     };
     };
   };
