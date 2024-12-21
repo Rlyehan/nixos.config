@@ -135,15 +135,66 @@ in
       };
     };
 
-    alacritty = {
-      enable = true;
-      settings = {
-        window.padding = {
-            x = 8;
-            y = 8;
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      colors = {
+        bright = {
+          black = "#50a2af";
+          blue = "#4b9bac";
+          cyan = "#4e9ba7";
+          green = "#6998b4";
+          magenta = "#4b9bac";
+          red = "#4e9ba7";
+          white = "#f5f6f7";
+          yellow = "#50a2af";
+        };
+        
+        cursor = {
+          cursor = "#e9eaeb";
+          text = "#2f302f";
+        };
+        
+        normal = {
+          black = "#2f302f";
+          blue = "#4b9bac";
+          cyan = "#4e9ba7";
+          green = "#6998b4";
+          magenta = "#4b9bac";
+          red = "#4e9ba7";
+          white = "#e9eaeb";
+          yellow = "#50a2af";
+        };
+        
+        primary = {
+          background = "#2f302f";
+          bright_foreground = "#f5f6f7";
+          foreground = "#e9eaeb";
+        };
+        
+        selection = {
+          background = "#2a6d95";
+          text = "#e9eaeb";
+        };
+      };
+      
+      font = {
+        size = 15;
+        normal = {
+          family = "GeistMono Nerd Font Mono";
+          style = "Regular";
+        };
+      };
+      
+      window = {
+        opacity = 0.8;
+        padding = {
+          x = 8;
+          y = 8;
         };
       };
     };
+  };
 
     zellij = {
       enable = true;
