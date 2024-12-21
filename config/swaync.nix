@@ -140,19 +140,19 @@
       background: #2f302f;
       color: #e9eaeb;
       caret-color: #e9eaeb;
-      border: 1px solid #${config.stylix.base16Scheme.base09};
+      border: 1px solid #929393;
       border-radius: 5px
     }
     .inline-reply-button {
       margin-left: 4px;
       background: #2f302f;
-      border: 1px solid #${config.stylix.base16Scheme.base09};
+      border: 1px solid #929393;
       border-radius: 5px;
       color: #e9eaeb;
     }
     .inline-reply-button:disabled {
       background: initial;
-      color: #${config.stylix.base16Scheme.base03};
+      color: #50a2af;
       border: 1px solid transparent
     }
     .inline-reply-button:hover {

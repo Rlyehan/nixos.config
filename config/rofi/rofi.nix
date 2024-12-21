@@ -23,7 +23,7 @@
         {
           "*" = {
             bg = mkLiteral "#2f302f";
-            bg-alt = mkLiteral "#${config.stylix.base16Scheme.base09}";
+            bg-alt = mkLiteral "#929393";
             foreground = mkLiteral "#354547";
             selected = mkLiteral "#4e9ba7";
             active = mkLiteral "#6998b4";
