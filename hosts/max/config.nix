@@ -113,6 +113,7 @@
       font-awesome
       material-icons
     ];
+    fontsconfig.defaultFonts = {
     monospace = {
       package = pkgs.nerdfonts.override { fonts = [ "GeistMono" ]; };
       name = "GeistMono Nerd Font Mono";
@@ -124,6 +125,7 @@
     serif = {
       package = pkgs.montserrat;
       name = "Montserrat";
+    };
     };
   };
 
