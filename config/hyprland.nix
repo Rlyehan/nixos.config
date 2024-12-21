@@ -96,7 +96,7 @@ with lib;
             animation = workspaces, 1, 5, wind
           }
           decoration {
-            rounding = 
+            rounding = 8
             shadow {
               enabled = true
               range = 3
