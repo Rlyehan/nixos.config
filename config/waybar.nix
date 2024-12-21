@@ -238,8 +238,16 @@ with lib;
           margin: 4px 0px;
           margin-left: 7px;
           padding: 0px 18px;
+<<<<<<< Updated upstream
           background: #c4c5c5;
           color: #2f302f;
+||||||| Stash base
+          background: #2f302f;
+          color: #2f302f;
+=======
+          background: #${config.stylix.base16Scheme.base04};
+          color: #${config.stylix.base16Scheme.base00};
+>>>>>>> Stashed changes
           border-radius: 5px 5px 5px 5px;
         }
         #custom-startmenu {
