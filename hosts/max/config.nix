@@ -116,8 +116,8 @@
     monospace = {
       package = pkgs.nerdfonts.override { fonts = [ "GeistMono" ]; };
     };
-    sansSerif = [pkgs.montserrat];
-    serif = [ pkgs.montserrat ];
+    #sansSerif = [pkgs.montserrat];
+    #serif = [ pkgs.montserrat ];
     };
   };
 
