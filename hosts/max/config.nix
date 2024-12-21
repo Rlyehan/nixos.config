@@ -111,7 +111,7 @@ fonts = {
   packages = with pkgs; [
     font-awesome
     material-icons
-    (nerdfonts.override { fonts = [ "GeistMono" ]; })
+    nerd-fonts.geist-mono
     montserrat
   ];
   fontconfig.defaultFonts = {
