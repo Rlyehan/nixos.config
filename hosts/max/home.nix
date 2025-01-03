@@ -135,7 +135,7 @@ in
       };
     };
 
-  programs.alacritty = {
+  alacritty = {
     enable = true;
     settings = {
       colors = {
