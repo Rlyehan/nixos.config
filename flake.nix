@@ -11,14 +11,30 @@
     };
   };
 
-  outputs =
-    { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
-      system = ["aarch64-linux" "x86_64-linux"];
+      system = "x86_64-linux";
       host = "max";
       username = "max";
+      pkgs = nixpkgs.legacyPackages.${system};
     in
     {
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          llvmPackages_17.libcxx
+          llvmPackages_17.libcxxabi
+          llvmPackages_17.clang
+          cmake
+          ninja
+          python3
+        ];
+
+        shellHook = ''
+          export CXXFLAGS="-isystem ${pkgs.llvmPackages_17.libcxx}/include/c++/v1"
+          export CPLUS_INCLUDE_PATH="${pkgs.llvmPackages_17.libcxx}/include/c++/v1"
+        '';
+      };
+
       nixosConfigurations = {
         "${host}" = nixpkgs.lib.nixosSystem {
           specialArgs = {

@@ -135,6 +135,47 @@ in
       };
     };
 
+  kitty = {
+  enable = true;
+  settings = {
+    # Colors
+    background = "#2f302f";
+    foreground = "#e9eaeb";
+    selection_background = "#2a6d95";
+    selection_foreground = "#e9eaeb";
+    cursor = "#e9eaeb";
+    cursor_text_color = "#2f302f";
+
+    # Normal colors
+    color0 = "#2f302f";  # black
+    color1 = "#4e9ba7";  # red
+    color2 = "#6998b4";  # green
+    color3 = "#50a2af";  # yellow
+    color4 = "#4b9bac";  # blue
+    color5 = "#4b9bac";  # magenta
+    color6 = "#4e9ba7";  # cyan
+    color7 = "#e9eaeb";  # white
+
+    # Bright colors
+    color8 = "#50a2af";   # bright black
+    color9 = "#4e9ba7";   # bright red
+    color10 = "#6998b4";  # bright green
+    color11 = "#50a2af";  # bright yellow
+    color12 = "#4b9bac";  # bright blue
+    color13 = "#4b9bac";  # bright magenta
+    color14 = "#4e9ba7";  # bright cyan
+    color15 = "#f5f6f7";  # bright white
+
+    # Font configuration
+    font_family = "GeistMono Nerd Font Mono";
+    font_size = 14;
+
+    # Window configuration
+    background_opacity = "0.8";
+    window_padding_width = 8;
+  };
+  };
+
   alacritty = {
     enable = true;
     settings = {
@@ -179,7 +220,7 @@ in
       };
       
       font = {
-        size = 15;
+        size = 14;
         normal = {
           family = "GeistMono Nerd Font Mono";
           style = "Regular";
@@ -195,11 +236,6 @@ in
       };
     };
   };
-
-    zellij = {
-      enable = true;
-      enableZshIntegration = true;
-    };
 
     direnv = {
         enable = true;

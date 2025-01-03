@@ -7,7 +7,6 @@ git
 ripgrep
 bat
 meson
-ninja
 pkg-config
 nixfmt-rfc-style
 nh
@@ -20,11 +19,6 @@ git-extras
 git-lfs
 diff-so-fancy
 jetbrains-toolbox
-
-#Languages
-rustup #Rust
-uv #Python
-bun #JS
 
 # System Utilities
 wget
@@ -87,5 +81,5 @@ firefox
 slack
 
 # Notetacking Apps
-  obsidian
+ obsidian
 ]

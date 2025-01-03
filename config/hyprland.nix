@@ -41,7 +41,7 @@ with lib;
           exec-once = nm-applet --indicator
           exec-once = lxqt-policykit-agent
           exec-once = sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/nix.png
-          monitor=,preferred,auto,1
+          monitor = ,preferred,auto,1
           ${extraMonitorSettings}
           general {
             gaps_in = 4
@@ -119,14 +119,11 @@ with lib;
             pseudotile = true
             preserve_split = true
           }
-          bind = ${modifier},Return,exec,alacritty
+          bind = ${modifier},Return,exec,kitty
           bind = ${modifier}SHIFT,Return,exec,rofi-launcher
           bind = ${modifier},W,exec,brave
           bind = ${modifier},S,exec,screenshootin
-          bind = ${modifier}SHIFT, S, exec,slack
           bind = ${modifier},T,exec,thunarn
-          bind = ${modifier}SHIFT, T, exec, teams
-          bind = ${modifier}, j, exec, jetbtains-toolbox
           bind = ${modifier},Q,killactive,
           bind = ${modifier}SHIFT,I,togglesplit,
           bind = ${modifier},F,fullscreen,
