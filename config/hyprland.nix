@@ -49,8 +49,8 @@ with lib;
             border_size = 1
             layout = dwindle
             resize_on_border = true
-            col.active_border = rgb(${config.stylix.base16Scheme.base08}) rgb(${config.stylix.base16Scheme.base0C}) 45deg
-            col.inactive_border = rgb(${config.stylix.base16Scheme.base01})
+            col.active_border = rgb(4e9ba7) rgb(4e9ba7) 45deg
+            col.inactive_border = rgb(354547)
           }
           input {
             kb_layout = us
@@ -65,8 +65,8 @@ with lib;
             sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
             accel_profile = flat
           }
-          windowrule = noborder,^(wofi)$
-          windowrule = center,^(wofi)$
+          windowrule = noborder,^(rofi)$
+          windowrule = center,^(rofi)$
           windowrule = float, nm-connection-editor|blueman-manager
           windowrule = float, swayimg|vlc|Viewnior|pavucontrol
           windowrule = float, nwg-look|qt5ct|mpv
@@ -97,10 +97,12 @@ with lib;
           }
           decoration {
             rounding = 8
-            drop_shadow = true
-            shadow_range = 3
-            shadow_render_power = 2
-            col.shadow = rgba(1a1a1aee)
+            shadow {
+              enabled = true
+              range = 3
+              render_power = 2
+              color = rgba(1a1a1aee)
+              }
             blur {
                 enabled = true
                 size = 2

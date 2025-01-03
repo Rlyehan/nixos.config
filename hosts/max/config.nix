@@ -10,7 +10,6 @@
   imports = [
     ./hardware.nix
     ./users.nix
-    ../../config/stylix.nix
     ../../modules/amd-drivers.nix
     ../../modules/nvidia-drivers.nix
     ../../modules/nvidia-prime-drivers.nix
@@ -108,12 +107,19 @@
 
   environment.systemPackages = pkgs.callPackage ./packages.nix {};
 
-  fonts = {
-    packages = with pkgs; [
-      font-awesome
-      material-icons
-    ];
+fonts = {
+  packages = with pkgs; [
+    font-awesome
+    material-icons
+    nerd-fonts.geist-mono
+    montserrat
+  ];
+  fontconfig.defaultFonts = {
+    monospace = [ "GeistMono Nerd Font Mono" ];
+    sansSerif = [ "Montserrat" ];
+    serif = [ "Montserrat" ];
   };
+};
 
 
   # Extra Portal Configuration
@@ -233,7 +239,11 @@
     '';
   };
 
-  security.pam.services.hyprlock = {};
+  security.pam.services.hyprlock = {
+    text = ''
+      auth include login
+    '';
+  };
 
   # Optimization settings and garbage collection automation
   nix = {

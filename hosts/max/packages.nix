@@ -86,6 +86,6 @@ firefox
 # Communication Tools
 slack
 
-# Extra Tools
-obsidian
+# Notetacking Apps
+  obsidian
 ]

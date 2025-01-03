@@ -22,15 +22,15 @@
         in
         {
           "*" = {
-            bg = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            bg-alt = mkLiteral "#${config.stylix.base16Scheme.base09}";
-            foreground = mkLiteral "#${config.stylix.base16Scheme.base01}";
-            selected = mkLiteral "#${config.stylix.base16Scheme.base08}";
-            active = mkLiteral "#${config.stylix.base16Scheme.base0B}";
-            text-selected = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            text-color = mkLiteral "#${config.stylix.base16Scheme.base05}";
-            border-color = mkLiteral "#${config.stylix.base16Scheme.base0F}";
-            urgent = mkLiteral "#${config.stylix.base16Scheme.base0E}";
+            bg = mkLiteral "#2f302f";
+            bg-alt = mkLiteral "#929393";
+            foreground = mkLiteral "#354547";
+            selected = mkLiteral "#4e9ba7";
+            active = mkLiteral "#6998b4";
+            text-selected = mkLiteral "#2f302f";
+            text-color = mkLiteral "#e9eaeb";
+            border-color = mkLiteral "#4b9bac";
+            urgent = mkLiteral "#4b9bac";
           };
           "window" = {
             width = mkLiteral "50%";
