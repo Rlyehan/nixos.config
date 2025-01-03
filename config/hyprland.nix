@@ -1,8 +1,6 @@
 {
   lib,
   username,
-  host,
-  config,
   ...
 }:
 
@@ -119,7 +117,7 @@ with lib;
             pseudotile = true
             preserve_split = true
           }
-          bind = ${modifier},Return,exec,alacritty
+          bind = ${modifier},Return,exec,kitty
           bind = ${modifier}SHIFT,Return,exec,rofi-launcher
           bind = ${modifier},W,exec,brave
           bind = ${modifier},S,exec,screenshootin

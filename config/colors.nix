@@ -7,7 +7,7 @@
 
     selection_bg = "#2a6d95";
     selection_fg = "#e9eaeb";
-    cursor = "#e9efixed config for laptopaeb";
+    cursor = "#e9eaeb";
     cursor_text = "#2f302f";
 
     black = "#2f302f";
