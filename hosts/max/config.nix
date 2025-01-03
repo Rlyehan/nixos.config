@@ -10,12 +10,6 @@
   imports = [
     ./hardware.nix
     ./users.nix
-    ../../modules/amd-drivers.nix
-    ../../modules/nvidia-drivers.nix
-    ../../modules/nvidia-prime-drivers.nix
-    ../../modules/intel-drivers.nix
-    ../../modules/vm-guest-services.nix
-    ../../modules/local-hardware-clock.nix
   ];
 
   boot = {
@@ -40,18 +34,6 @@
     };
     plymouth.enable = true;
   };
-
-  # Extra Module Options
-  drivers.amdgpu.enable = true;
-  drivers.nvidia.enable = false;
-  drivers.nvidia-prime = {
-    enable = false;
-    intelBusID = "";
-    nvidiaBusID = "";
-  };
-  drivers.intel.enable = false;
-  vm.guest-services.enable = false;
-  local.hardware-clock.enable = false;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -140,6 +122,7 @@ fonts = {
   # Services to start
   services = {
     xserver = {
+      videoDrivers = [ "amdgpu" ];
       enable = false;
       xkb = {
         variant = "";
