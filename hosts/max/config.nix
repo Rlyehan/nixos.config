@@ -232,7 +232,8 @@ fonts = {
     })
   '';
 
-  security.pam.services.hyprlock = {};
+  #security.pam.services.hyprlock = {};
+  security.pam.services.swaylock = {};
 
   # Optimization settings and garbage collection automation
   nix = {
