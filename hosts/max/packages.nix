@@ -10,7 +10,7 @@ meson
 pkg-config
 nixfmt-rfc-style
 nh
-zed-editor
+vscode
 lazygit
 awscli
 podman-compose
@@ -45,6 +45,7 @@ gnupg
 htop
 atop
 radeontop
+clinfo
 lm_sensors
 
 # Networking Tools
