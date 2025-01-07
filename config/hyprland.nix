@@ -7,7 +7,7 @@
 }:
 
 let
-    extraMonitorSettings = "monitor = DP-8, 5120x2160, 1920x0, 1.0";
+  # extraMonitorSettings = "monitor = DP-8, 5120x2160@60.00, 1920x0, 1.0";
 in
 with lib;
 {
@@ -42,7 +42,7 @@ with lib;
           exec-once = lxqt-policykit-agent
           exec-once = sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/nix.png
           monitor = ,preferred,auto,1
-          ${extraMonitorSettings}
+          
           general {
             gaps_in = 4
             gaps_out = 4
