@@ -232,17 +232,8 @@ fonts = {
       }
     })
   '';
-  security.pam.services.swaylock = {
-    text = ''
-      auth include login
-    '';
-  };
 
-  security.pam.services.hyprlock = {
-    text = ''
-      auth include login
-    '';
-  };
+  security.pam.services.hyprlock = {};
 
   # Optimization settings and garbage collection automation
   nix = {
