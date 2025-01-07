@@ -3,6 +3,7 @@
   host,
   username,
   options,
+  config,
   ...
 }:
 {
@@ -14,6 +15,7 @@
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
+    kernelParams = [ "mem_sleep_default=deep" ];
     # Bootloader.
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
@@ -186,6 +188,9 @@ fonts = {
     };
     rpcbind.enable = false;
     nfs.server.enable = false;
+    fprintd.enable = true;
+    logind.lidSwitch = "suspend";
+    logind.lidSwitchExternalPower = "suspend";
   };
   systemd.services.flatpak-repo = {
     wantedBy = [ "multi-user.target" ];
@@ -234,6 +239,7 @@ fonts = {
 
   #security.pam.services.hyprlock = {};
   security.pam.services.swaylock = {};
+  security.pam.services.swaylock.fprintAuth = true;
 
   # Optimization settings and garbage collection automation
   nix = {

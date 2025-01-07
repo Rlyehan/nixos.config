@@ -22,6 +22,7 @@ jetbrains-toolbox
 
 # System Utilities
 wget
+fprintd
 killall
 eza
 unzip
