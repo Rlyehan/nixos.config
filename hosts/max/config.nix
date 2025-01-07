@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   host,
   username,
@@ -37,7 +36,7 @@
 
   #graphics stuff
   hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
-  systemd.tmpfiles.rules = 
+  systemd.tmpfiles.rules =
   let
     rocmEnv = pkgs.symlinkJoin {
       name = "rocm-combined";

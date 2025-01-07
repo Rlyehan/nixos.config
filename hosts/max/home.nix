@@ -1,13 +1,10 @@
 {
   pkgs,
-  config,
   username,
   host,
   ...
 }:
 let
-  gitUsername = "Rlyehan";
-  gitEmail = "maximilian.hub@proton.me";
   colorScheme = import ../../config/colors.nix;
   colors = colorScheme.colors;
 in

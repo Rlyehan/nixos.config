@@ -2,7 +2,6 @@
 
 with pkgs; [
 # Development Tools
-vim
 git
 ripgrep
 bat
@@ -12,6 +11,7 @@ nixfmt-rfc-style
 nh
 vscode
 lazygit
+nh
 awscli
 podman-compose
 podman-tui
@@ -53,16 +53,10 @@ networkmanagerapplet
 pciutils
 tailscale
 
-# Virtualization Tools
-libvirt
-virt-viewer
-
 # Multimedia Tools
-mpv
 pavucontrol
 playerctl
 tidal-hifi
-
 
 # Wayland/Desktop Environment Tools
 lxqt.lxqt-policykit

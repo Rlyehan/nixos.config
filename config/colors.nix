@@ -1,4 +1,3 @@
-# colors.nix
 {
   colors = {
     # Base colors
