@@ -93,7 +93,7 @@ fonts = {
   packages = with pkgs; [
     font-awesome
     material-icons
-    nerd-fonts.geist-mono
+    nerdfonts
     montserrat
   ];
   fontconfig.defaultFonts = {

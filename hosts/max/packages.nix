@@ -43,6 +43,8 @@ gnupg
 
 # System Monitoring
 htop
+atop
+radeontop
 lm_sensors
 
 # Networking Tools
