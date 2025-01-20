@@ -15,7 +15,12 @@
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelParams = [ "mem_sleep_default=deep" ];
+    kernelParams = [ 
+      "mem_sleep_default=deep"
+      "amdgpu.dcfeaturemask=0"
+      "amdgpu.dcdebugmask=0"
+      "amdgpu.deep_color=0"
+    ];
     # Bootloader.
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;

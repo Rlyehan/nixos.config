@@ -4,14 +4,17 @@ with pkgs; [
 # Development Tools
 git
 ripgrep
+jq
 bat
 meson
 pkg-config
 nixfmt-rfc-style
 nh
+libz
 vscode
 lazygit
 nh
+mongodb-compass
 awscli
 podman-compose
 podman-tui
@@ -19,6 +22,7 @@ git-extras
 git-lfs
 diff-so-fancy
 jetbrains-toolbox
+ghostty
 
 # System Utilities
 wget
@@ -41,6 +45,7 @@ file-roller
 yad
 zoxide
 gnupg
+ktailctl
 
 # System Monitoring
 htop

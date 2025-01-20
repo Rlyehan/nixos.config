@@ -11,7 +11,7 @@
 # Styling Options
 stylix = {
   enable = false;
-  image = ./wallpapers/nix.png;
+  image = ./wallpapers/cool.jpg;
   polarity = "dark";
   opacity.terminal = 0.8;
 };

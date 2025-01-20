@@ -5,7 +5,7 @@
 }:
 
 let
-    extraMonitorSettings = "monitor = DP-8, 5120x2160, 1920x0, 1";
+    extraMonitorSettings = "monitor = DP-8, 3440x1440, 1920x0, 1";
 in
 with lib;
 {
@@ -38,7 +38,7 @@ with lib;
           exec-once = killall -q swaync;sleep .5 && swaync
           exec-once = nm-applet --indicator
           exec-once = lxqt-policykit-agent
-          exec-once = sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/nix.png
+          exec-once = sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/cool.jpg
           monitor=,preferred,auto,1
           ${extraMonitorSettings}
           general {
