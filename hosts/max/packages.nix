@@ -23,6 +23,8 @@ git-lfs
 diff-so-fancy
 jetbrains-toolbox
 ghostty
+nushell
+ollama
 
 # System Utilities
 wget
@@ -46,6 +48,7 @@ yad
 zoxide
 gnupg
 ktailctl
+devbox
 
 # System Monitoring
 htop

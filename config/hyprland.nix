@@ -5,7 +5,7 @@
 }:
 
 let
-    extraMonitorSettings = "monitor = DP-8, 3440x1440, 1920x0, 1";
+    extraMonitorSettings = "monitor = DP-1, 3440x1440, 1920x0, 1";
 in
 with lib;
 {
@@ -117,7 +117,7 @@ with lib;
             pseudotile = true
             preserve_split = true
           }
-          bind = ${modifier},Return,exec,kitty
+            bind = ${modifier},Return,exec,ghostty
           bind = ${modifier}SHIFT,Return,exec,rofi-launcher
           bind = ${modifier},W,exec,brave
           bind = ${modifier},S,exec,screenshootin
