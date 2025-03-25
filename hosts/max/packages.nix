@@ -25,6 +25,9 @@ jetbrains-toolbox
 ghostty
 nushell
 ollama
+code-cursor
+insomnia
+
 
 # System Utilities
 wget
