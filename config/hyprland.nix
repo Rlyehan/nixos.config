@@ -76,8 +76,7 @@ with lib;
           windowrulev2 = opacity 0.9 0.7, class:^(thunar)$
           windowrule = workspace 1 silent, class:^(Slack)$
           windowrule = workspace 2 silent, class:^(Brave)$
-          windowrule = workspace 3 silent, class:^(Teams)$
-          windowrule = workspace 4 silent, class:^(Code)$
+          windowrule = workspace 3 silent, class:^(Code)$
           windowrule = workspace 4 silent, class:^(Ghostty)$
 
           gestures {
