@@ -41,7 +41,7 @@ with lib;
           exec-once = sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/cool.jpg
           exec-once = [workspace 1 silent] slack
           exec-once = [workspace 2 silent] brave
-          exec-once = [workspace 3 silent] code
+          exec-once = [workspace 3 silent] teams
           exec-once = [workspace 4 silent] ghostty
           monitor=,preferred,auto,1
           ${extraMonitorSettings}
@@ -76,8 +76,6 @@ with lib;
           windowrulev2 = opacity 0.9 0.7, class:^(thunar)$
           windowrule = workspace 1 silent, class:^(Slack)$
           windowrule = workspace 2 silent, class:^(Brave)$
-          windowrule = workspace 3 silent, class:^(Code)$
-          windowrule = workspace 4 silent, class:^(Ghostty)$
 
           gestures {
             workspace_swipe = true

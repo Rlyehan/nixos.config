@@ -204,6 +204,19 @@ fonts = {
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
   };
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        govenor = "powersave";
+        turbo = "never";
+      };
+      charger = {
+        govenor = "performance";
+        turbo = "auto";
+      };
+    };
+  };
   hardware.sane = {
     enable = true;
     extraBackends = [ pkgs.sane-airscan ];
