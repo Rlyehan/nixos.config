@@ -27,7 +27,7 @@ nushell
 ollama
 code-cursor
 insomnia
-
+databricks-cli
 
 # System Utilities
 wget
