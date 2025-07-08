@@ -56,8 +56,7 @@ with lib;
           }
           input {
             kb_layout = us
-            kb_options = grp:alt_shift_toggle
-            kb_options = caps:super
+            kb_options = grp:alt_shift_toggle,caps:super
             follow_mouse = 1
             touchpad {
               natural_scroll = true
@@ -67,15 +66,22 @@ with lib;
             sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
             accel_profile = flat
           }
-          windowrule = noborder,^(rofi)$
-          windowrule = center,^(rofi)$
-          windowrule = float, nm-connection-editor|blueman-manager
-          windowrule = float, swayimg|vlc|Viewnior|pavucontrol
-          windowrule = float, nwg-look|qt5ct|mpv|thunar
-          windowrulev2 = opacity 0.9 0.7, class:^(Brave)$
-          windowrulev2 = opacity 0.9 0.7, class:^(thunar)$
-          windowrule = workspace 1 silent, class:^(Slack)$
-          windowrule = workspace 2 silent, class:^(Brave)$
+          windowrulev2 = noborder,class:^(rofi)$
+          windowrulev2 = center,class:^(rofi)$
+          windowrulev2 = float,class:^(nm-connection-editor)$
+          windowrulev2 = float,class:^(blueman-manager)$
+          windowrulev2 = float,class:^(swayimg)$
+          windowrulev2 = float,class:^(vlc)$
+          windowrulev2 = float,class:^(Viewnior)$
+          windowrulev2 = float,class:^(pavucontrol)$
+          windowrulev2 = float,class:^(nwg-look)$
+          windowrulev2 = float,class:^(qt5ct)$
+          windowrulev2 = float,class:^(mpv)$
+          windowrulev2 = float,class:^(thunar)$
+          windowrulev2 = opacity 0.9 0.7,class:^(Brave)$
+          windowrulev2 = opacity 0.9 0.7,class:^(thunar)$
+          windowrulev2 = workspace 1 silent,class:^(Slack)$
+          windowrulev2 = workspace 2 silent,class:^(Brave)$
 
           gestures {
             workspace_swipe = true
@@ -116,10 +122,6 @@ with lib;
                 ignore_opacity = off
             }
           }
-          plugin {
-            hyprtrails {
-            }
-          }
           dwindle {
             pseudotile = true
             preserve_split = true
@@ -128,7 +130,7 @@ with lib;
           bind = ${modifier}SHIFT,Return,exec,rofi-launcher
           bind = ${modifier},W,exec,brave
           bind = ${modifier},S,exec,screenshootin
-          bind = ${modifier},T,exec,thunarn
+          bind = ${modifier},T,exec,thunar
           bind = ${modifier},Q,killactive,
           bind = ${modifier}SHIFT,I,togglesplit,
           bind = ${modifier},F,fullscreen,
