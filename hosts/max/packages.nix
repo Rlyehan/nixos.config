@@ -54,6 +54,15 @@ gnupg
 ktailctl
 devbox
 
+# GTK and Theme Support
+dconf
+gsettings-desktop-schemas
+glib
+gtk3
+gtk4
+gnome-themes-extra
+adwaita-icon-theme
+
 # System Monitoring
 htop
 atop

@@ -63,6 +63,29 @@ in
       autoconnect = [ "qemu:///system" ];
       uris = [ "qemu:///system" ];
     };
+    
+    # GTK theme settings
+    "org/gnome/desktop/interface" = {
+      gtk-theme = "Arc-Dark";
+      icon-theme = "Papirus-Dark";
+      cursor-theme = "Bibata-Modern-Ice";
+      cursor-size = 24;
+      font-name = "GeistMono Nerd Font Mono 11";
+      document-font-name = "GeistMono Nerd Font Mono 11";
+      monospace-font-name = "GeistMono Nerd Font Mono 11";
+      color-scheme = "prefer-dark";
+      gtk-enable-primary-paste = true;
+    };
+    
+    # File manager (Thunar) specific settings
+    "org/gnome/desktop/default-applications/file-manager" = {
+      exec = "thunar";
+    };
+    
+    # Ensure icons are shown in menus and buttons (using proper GVariant format)
+    "org/gnome/settings-daemon/plugins/xsettings" = {
+      overrides = "{'Gtk/ButtonImages': <1>, 'Gtk/MenuImages': <1>, 'Gtk/ToolbarStyle': <'both'>, 'Gtk/ToolbarIconSize': <'large'>}";
+    };
   };
 
   # Styling Options
@@ -73,26 +96,83 @@ in
   };
 
   gtk = {
+    enable = true;
+    
+    theme = {
+      # Arc-Dark matches your teal-blue accent aesthetic better
+      name = "Arc-Dark";
+      package = pkgs.arc-theme;
+      # Alternative that also works well with your colors:
+      # name = "Materia-Dark-Compact"; 
+      # package = pkgs.materia-theme;
+    };
+    
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
+      # Alternative that matches your blue accents: "Tela-blue-dark"
     };
+    
+    font = {
+      # Match your waybar font family
+      name = "GeistMono Nerd Font Mono";
+      size = 11;
+    };
+    
+    gtk2.extraConfig = ''
+      gtk-theme-name="Arc-Dark"
+      gtk-icon-theme-name="Papirus-Dark"
+      gtk-font-name="GeistMono Nerd Font Mono 11"
+      gtk-cursor-theme-name="Bibata-Modern-Ice"
+      gtk-cursor-theme-size=24
+      gtk-toolbar-style=GTK_TOOLBAR_BOTH
+      gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+      gtk-button-images=1
+      gtk-menu-images=1
+      gtk-enable-event-sounds=1
+      gtk-enable-input-feedback-sounds=1
+      gtk-xft-antialias=1
+      gtk-xft-hinting=1
+      gtk-xft-hintstyle="hintfull"
+    '';
+    
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
+      gtk-theme-name = "Arc-Dark";
+      gtk-icon-theme-name = "Papirus-Dark";
+      gtk-font-name = "GeistMono Nerd Font Mono 11";
+      gtk-cursor-theme-name = "Bibata-Modern-Ice";
+      gtk-cursor-theme-size = 24;
+      gtk-toolbar-style = "GTK_TOOLBAR_BOTH";
+      gtk-toolbar-icon-size = "GTK_ICON_SIZE_LARGE_TOOLBAR";
+      gtk-button-images = 1;
+      gtk-menu-images = 1;
+      gtk-enable-event-sounds = 1;
+      gtk-enable-input-feedback-sounds = 1;
+      gtk-xft-antialias = 1;
+      gtk-xft-hinting = 1;
+      gtk-xft-hintstyle = "hintfull";
     };
+    
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
+      gtk-theme-name = "Arc-Dark";
+      gtk-icon-theme-name = "Papirus-Dark";
+      gtk-font-name = "GeistMono Nerd Font Mono 11";
+      gtk-cursor-theme-name = "Bibata-Modern-Ice";
+      gtk-cursor-theme-size = 24;
     };
   };
+  
   qt = {
     enable = true;
     style.name = "adwaita-dark";
     platformTheme.name = "gtk3";
   };
 
-
   # Scripts
   home.packages = [
+    # Existing scripts
     (import ../../scripts/task-waybar.nix { inherit pkgs; })
     (import ../../scripts/nvidia-offload.nix { inherit pkgs; })
     (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
@@ -101,6 +181,32 @@ in
       inherit pkgs;
       inherit host;
     })
+    
+    # GTK theming and icon packages
+    pkgs.arc-theme             # Primary choice - matches your blue/teal accents
+    pkgs.materia-theme         # Alternative dark theme option  
+    pkgs.gnome-themes-extra      # Provides Adwaita and other themes
+    pkgs.orchis-theme           # Modern alternative theme (commented option above)
+    pkgs.papirus-icon-theme      # High-quality icon theme
+    pkgs.hicolor-icon-theme      # Base icon theme (required)
+    pkgs.adwaita-icon-theme # GNOME's default icon theme (fills gaps)
+    pkgs.numix-icon-theme        # Alternative comprehensive icon theme
+    pkgs.elementary-xfce-icon-theme # Good for Thunar specifically
+    
+    # Font packages for better text rendering (ensure GeistMono is available)
+    pkgs.dejavu_fonts
+    pkgs.liberation_ttf
+    pkgs.source-code-pro
+    pkgs.geist-font           # Includes GeistMono Nerd Font
+    
+    # Additional blue/teal friendly icon themes
+    pkgs.tela-icon-theme      # Has blue variants that match your accent colors
+    pkgs.qogir-icon-theme     # Another good option with blue accents
+    
+    # GTK tools for debugging/configuration
+    pkgs.gtk3
+    pkgs.gtk4
+    pkgs.glib # Provides gsettings
   ];
 
   services = {
