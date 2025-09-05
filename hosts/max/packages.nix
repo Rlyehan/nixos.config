@@ -28,7 +28,7 @@ ollama
 code-cursor
 insomnia
 databricks-cli
-zoom-us
+kooha
 
 # System Utilities
 wget
