@@ -5,7 +5,7 @@
 }:
 
 let
-    extraMonitorSettings = "monitor = DP-1, 3440x1440, 1920x0, 1";
+    extraMonitorSettings = "monitor = HDMI-A-1, 3440x1440, 1920x0, 1";
 in
 with lib;
 {
@@ -33,12 +33,12 @@ with lib;
           env = MOZ_ENABLE_WAYLAND, 1
           exec-once = dbus-update-activation-environment --systemd --all
           exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-          exec-once = killall -q swww;sleep .5 && swww init
+          exec-once = killall -q swww-daemon;sleep .5 && swww-daemon
           exec-once = killall -q waybar;sleep .5 && waybar
           exec-once = killall -q swaync;sleep .5 && swaync
           exec-once = nm-applet --indicator
           exec-once = lxqt-policykit-agent
-          exec-once = sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/cool.jpg
+          exec-once = sleep 2 && swww img /home/${username}/Pictures/Wallpapers/cool.jpg
           exec-once = [workspace 1 silent] slack
           exec-once = [workspace 2 silent] brave
           exec-once = [workspace 3 silent] teams
@@ -83,14 +83,12 @@ with lib;
           windowrulev2 = workspace 1 silent,class:^(Slack)$
           windowrulev2 = workspace 2 silent,class:^(Brave)$
 
-          gestures {
-            workspace_swipe = true
-            workspace_swipe_fingers = 3
-          }
           misc {
             initial_workspace_tracking = 0
             mouse_move_enables_dpms = true
             key_press_enables_dpms = false
+            disable_splash_rendering = true
+            force_default_wallpaper = 0
           }
           animations {
             enabled = yes

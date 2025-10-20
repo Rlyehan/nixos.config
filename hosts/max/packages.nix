@@ -89,12 +89,11 @@ swaynotificationcenter
 swww
 grim
 slurp
-greetd.tuigreet
+tuigreet
 imv
 
 # Web Browsers
 brave
-firefox
 
 # Communication Tools
 slack

@@ -49,6 +49,22 @@ in
     early_exit=true
     fill_shape=false
   '';
+  
+  home.file.".config/ghostty/config".text = ''
+    # Theme - Options: Catppuccin Mocha, Catppuccin Frappe, Catppuccin Macchiato, Catppuccin Latte
+    theme = Catppuccin Mocha
+    
+    # Font
+    font-family = GeistMono Nerd Font Mono
+    font-size = 11
+    
+    # Window
+    window-padding-x = 10
+    window-padding-y = 10
+    
+    # Other settings
+    shell-integration-features = no-cursor
+  '';
 
   # Create XDG Dirs
   xdg = {
@@ -190,7 +206,6 @@ in
     pkgs.papirus-icon-theme      # High-quality icon theme
     pkgs.hicolor-icon-theme      # Base icon theme (required)
     pkgs.adwaita-icon-theme # GNOME's default icon theme (fills gaps)
-    pkgs.numix-icon-theme        # Alternative comprehensive icon theme
     pkgs.elementary-xfce-icon-theme # Good for Thunar specifically
     
     # Font packages for better text rendering (ensure GeistMono is available)
@@ -198,10 +213,6 @@ in
     pkgs.liberation_ttf
     pkgs.source-code-pro
     pkgs.geist-font           # Includes GeistMono Nerd Font
-    
-    # Additional blue/teal friendly icon themes
-    pkgs.tela-icon-theme      # Has blue variants that match your accent colors
-    pkgs.qogir-icon-theme     # Another good option with blue accents
     
     # GTK tools for debugging/configuration
     pkgs.gtk3

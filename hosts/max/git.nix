@@ -3,8 +3,6 @@
 {
 programs.git = {
   enable = true;
-  userName = "Maximilian Huber";
-  userEmail = "maximilian.hub@proton.me";
 
   includes = [
     {
@@ -17,7 +15,11 @@ programs.git = {
     }
   ];
 
-  extraConfig = {
+  settings = {
+    user = {
+      name = "Maximilian Huber";
+      email = "maximilian.hub@proton.me";
+    };
     github.user = "Rlyehan";
 
     core = {
@@ -87,10 +89,8 @@ programs.git = {
       process = "git-lfs filter-process";
       required = true;
     };
-  };
 
-
-    aliases = {
+    alias = {
       aliases = "!git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'";
       st = "status -sb";
       c = "commit -m";
@@ -108,5 +108,6 @@ programs.git = {
       dff = "diff --word-diff";
       review-local = "!git lg @{push}..";
     };
+  };
   };
 }
