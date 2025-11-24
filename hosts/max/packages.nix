@@ -29,6 +29,7 @@ code-cursor
 insomnia
 databricks-cli
 kooha
+clickhouse
 
 # System Utilities
 wget
