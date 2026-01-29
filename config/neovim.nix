@@ -62,7 +62,7 @@ in
         set noemoji
         nnoremap : <cmd>FineCmdline<CR>
       '';
-      extraLuaConfig = ''
+      initLua = ''
         ${builtins.readFile ./nvim/options.lua}
         ${builtins.readFile ./nvim/keymaps.lua}
         ${builtins.readFile ./nvim/plugins/alpha.lua}

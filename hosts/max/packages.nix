@@ -8,7 +8,7 @@ jq
 bat
 meson
 pkg-config
-nixfmt-rfc-style
+nixfmt
 nh
 libz
 vscode
