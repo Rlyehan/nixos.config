@@ -36,7 +36,6 @@ in
         nui-nvim
         finecmdline
         nvim-treesitter.withAllGrammars
-        lualine-nvim
         nvim-autopairs
         nvim-web-devicons
         nvim-cmp

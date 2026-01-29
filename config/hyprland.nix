@@ -5,7 +5,7 @@
 }:
 
 let
-    extraMonitorSettings = "monitor = HDMI-A-1, 3440x1440, 1920x0, 1";
+    extraMonitorSettings = "monitor = DP-5, 5120x2160, 1920x0, 1.25";
 in
 with lib;
 {
@@ -44,7 +44,6 @@ with lib;
           exec-once = [workspace 3 silent] teams
           exec-once = [workspace 4 silent] ghostty
           monitor=,preferred,auto,1
-          ${extraMonitorSettings}
           general {
             gaps_in = 4
             gaps_out = 4
