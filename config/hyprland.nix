@@ -65,22 +65,22 @@ with lib;
             sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
             accel_profile = flat
           }
-          windowrulev2 = noborder,class:^(rofi)$
-          windowrulev2 = center,class:^(rofi)$
-          windowrulev2 = float,class:^(nm-connection-editor)$
-          windowrulev2 = float,class:^(blueman-manager)$
-          windowrulev2 = float,class:^(swayimg)$
-          windowrulev2 = float,class:^(vlc)$
-          windowrulev2 = float,class:^(Viewnior)$
-          windowrulev2 = float,class:^(pavucontrol)$
-          windowrulev2 = float,class:^(nwg-look)$
-          windowrulev2 = float,class:^(qt5ct)$
-          windowrulev2 = float,class:^(mpv)$
-          windowrulev2 = float,class:^(thunar)$
-          windowrulev2 = opacity 0.9 0.7,class:^(Brave)$
-          windowrulev2 = opacity 0.9 0.7,class:^(thunar)$
-          windowrulev2 = workspace 1 silent,class:^(Slack)$
-          windowrulev2 = workspace 2 silent,class:^(Brave)$
+          windowrule = decorate off, match:class ^(rofi)$
+          windowrule = center on, match:class ^(rofi)$
+          windowrule = float on, match:class ^(nm-connection-editor)$
+          windowrule = float on, match:class ^(blueman-manager)$
+          windowrule = float on, match:class ^(swayimg)$
+          windowrule = float on, match:class ^(vlc)$
+          windowrule = float on, match:class ^(Viewnior)$
+          windowrule = float on, match:class ^(pavucontrol)$
+          windowrule = float on, match:class ^(nwg-look)$
+          windowrule = float on, match:class ^(qt5ct)$
+          windowrule = float on, match:class ^(mpv)$
+          windowrule = float on, match:class ^(thunar)$
+          windowrule = opacity 0.9 0.7, match:class ^(Brave)$
+          windowrule = opacity 0.9 0.7, match:class ^(thunar)$
+          windowrule = workspace 1 silent, match:class ^(Slack)$
+          windowrule = workspace 2 silent, match:class ^(Brave)$
 
           misc {
             initial_workspace_tracking = 0

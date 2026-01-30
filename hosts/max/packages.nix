@@ -11,7 +11,6 @@ pkg-config
 nixfmt
 nh
 libz
-vscode
 lazygit
 nh
 mongodb-compass
@@ -30,6 +29,8 @@ insomnia
 databricks-cli
 kooha
 clickhouse
+kiro
+#kiro-cli
 
 # System Utilities
 wget
