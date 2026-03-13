@@ -12,7 +12,6 @@ nixfmt
 nh
 libz
 lazygit
-nh
 mongodb-compass
 awscli
 podman-compose
@@ -30,7 +29,7 @@ databricks-cli
 kooha
 clickhouse
 kiro
-#kiro-cli
+kiro-cli
 
 # System Utilities
 wget
@@ -59,10 +58,6 @@ devbox
 # GTK and Theme Support
 dconf
 gsettings-desktop-schemas
-glib
-gtk3
-gtk4
-gnome-themes-extra
 adwaita-icon-theme
 
 # System Monitoring
@@ -100,6 +95,6 @@ brave
 # Communication Tools
 slack
 
-# Notetacking Apps
- obsidian
+# Notetaking Apps
+obsidian
 ]
