@@ -13,7 +13,6 @@
       system = "x86_64-linux";
       host = "max";
       username = "max";
-      pkgs = nixpkgs.legacyPackages.${system};
 
       mkHost =
         { systemModules, homeModules }:
@@ -61,21 +60,6 @@
       };
     in
     {
-      devShells.${system}.default = pkgs.mkShell {
-        buildInputs = with pkgs; [
-          llvmPackages_19.libcxx
-          llvmPackages_19.clang
-          cmake
-          ninja
-          python3
-        ];
-
-        shellHook = ''
-          export CXXFLAGS="-isystem ${pkgs.llvmPackages_19.libcxx}/include/c++/v1"
-          export CPLUS_INCLUDE_PATH="${pkgs.llvmPackages_19.libcxx}/include/c++/v1"
-        '';
-      };
-
       nixosConfigurations = configs // {
         "max" = configs."max-hyprland";
       };

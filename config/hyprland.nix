@@ -16,12 +16,12 @@ with lib;
       in
       concatStrings [
         ''
-          env = NIXOS_OZONE_WL, 1
-          env = NIXPKGS_ALLOW_UNFREE, 1
-          env = QT_QPA_PLATFORM, wayland;xcb
-          env = QT_WAYLAND_DISABLE_WINDOWDECORATION, 1
-          env = QT_AUTO_SCREEN_SCALE_FACTOR, 1
-          env = MOZ_ENABLE_WAYLAND, 1
+          env = NIXOS_OZONE_WL,1
+          env = NIXPKGS_ALLOW_UNFREE,1
+          env = QT_QPA_PLATFORM,wayland
+          env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+          env = QT_AUTO_SCREEN_SCALE_FACTOR,1
+          env = MOZ_ENABLE_WAYLAND,1
           exec-once = uwsm app -- swww-daemon
           exec-once = uwsm app -- waybar
           exec-once = uwsm app -- swaync
@@ -74,8 +74,6 @@ with lib;
             initial_workspace_tracking = 0
             mouse_move_enables_dpms = true
             key_press_enables_dpms = false
-            disable_splash_rendering = true
-            force_default_wallpaper = 0
           }
           animations {
             enabled = yes
@@ -103,7 +101,6 @@ with lib;
                 enabled = true
                 size = 2
                 passes = 3
-                new_optimizations = on
                 ignore_opacity = off
             }
           }
@@ -117,7 +114,7 @@ with lib;
           bind = ${modifier},S,exec,screenshootin
           bind = ${modifier},T,exec,thunar
           bind = ${modifier},Q,killactive,
-          bind = ${modifier}SHIFT,I,togglesplit,
+          bind = ${modifier}SHIFT,I,layoutmsg,togglesplit
           bind = ${modifier},F,fullscreen,
           bind = ${modifier}SHIFT,F,togglefloating,
           bind = ${modifier}SHIFT,C,exit,
