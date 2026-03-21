@@ -38,19 +38,19 @@ in
     early_exit=true
     fill_shape=false
   '';
-  
+
   home.file.".config/ghostty/config".text = ''
     # Theme - Options: Catppuccin Mocha, Catppuccin Frappe, Catppuccin Macchiato, Catppuccin Latte
     theme = Catppuccin Mocha
-    
+
     # Font
     font-family = GeistMono Nerd Font Mono
     font-size = 11
-    
+
     # Window
     window-padding-x = 10
     window-padding-y = 10
-    
+
     # Other settings
     shell-integration-features = no-cursor
   '';
@@ -68,7 +68,7 @@ in
       autoconnect = [ "qemu:///system" ];
       uris = [ "qemu:///system" ];
     };
-    
+
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
@@ -83,31 +83,31 @@ in
 
   gtk = {
     enable = true;
-    
+
     theme = {
-      name = "Arc-Dark";
-      package = pkgs.arc-theme;
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
     };
-    
+
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-    
+
     font = {
       name = "GeistMono Nerd Font Mono";
       size = 11;
     };
-    
+
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
-    
+
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
   };
-  
+
   qt = {
     enable = true;
     style.name = "adwaita-dark";
@@ -125,7 +125,6 @@ in
     (import ../../scripts/screenshootin.nix { inherit pkgs; })
 
     # GTK theming
-    pkgs.arc-theme
     pkgs.papirus-icon-theme
     pkgs.hicolor-icon-theme
     pkgs.elementary-xfce-icon-theme
@@ -140,51 +139,51 @@ in
       };
     };
 
-  kitty = {
-  enable = true;
-  settings = {
-    # Colors
-      background = colors.background;
-      foreground = colors.foreground;
-      selection_background = colors.selection_bg;
-      selection_foreground = colors.selection_fg;
-      cursor = colors.cursor;
-      cursor_text_color = colors.cursor_text;
+    kitty = {
+      enable = true;
+      settings = {
+        # Colors
+        background = colors.background;
+        foreground = colors.foreground;
+        selection_background = colors.selection_bg;
+        selection_foreground = colors.selection_fg;
+        cursor = colors.cursor;
+        cursor_text_color = colors.cursor_text;
 
-      # Normal colors (monochromatic teal palette)
-      color0 = colors.black;
-      color1 = colors.teal;
-      color2 = colors.steel;
-      color3 = colors.aqua;
-      color4 = colors.ocean;
-      color5 = colors.slate;
-      color6 = colors.cyan;
-      color7 = colors.white;
+        # Normal colors (monochromatic teal palette)
+        color0 = colors.black;
+        color1 = colors.teal;
+        color2 = colors.steel;
+        color3 = colors.aqua;
+        color4 = colors.ocean;
+        color5 = colors.slate;
+        color6 = colors.cyan;
+        color7 = colors.white;
 
-      # Bright colors
-      color8 = colors.bright_black;
-      color9 = colors.bright_teal;
-      color10 = colors.bright_steel;
-      color11 = colors.bright_aqua;
-      color12 = colors.bright_ocean;
-      color13 = colors.bright_slate;
-      color14 = colors.bright_cyan;
-      color15 = colors.bright_white;
+        # Bright colors
+        color8 = colors.bright_black;
+        color9 = colors.bright_teal;
+        color10 = colors.bright_steel;
+        color11 = colors.bright_aqua;
+        color12 = colors.bright_ocean;
+        color13 = colors.bright_slate;
+        color14 = colors.bright_cyan;
+        color15 = colors.bright_white;
 
-    # Font configuration
-    font_family = "GeistMono Nerd Font Mono";
-    font_size = 14;
+        # Font configuration
+        font_family = "GeistMono Nerd Font Mono";
+        font_size = 14;
 
-    # Window configuration
-    background_opacity = "0.8";
-    window_padding_width = 8;
-  };
-  };
+        # Window configuration
+        background_opacity = "0.8";
+        window_padding_width = 8;
+      };
+    };
 
     direnv = {
-        enable = true;
-        enableZshIntegration = true;
-        nix-direnv.enable = true;
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
     };
 
     home-manager.enable = true;

@@ -14,7 +14,7 @@
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelParams = [ 
+    kernelParams = [
       "mem_sleep_default=deep"
     ];
     # Bootloader.
@@ -23,15 +23,6 @@
     # Make /tmp a tmpfs
     tmp = {
       useTmpfs = false;
-    };
-    # Appimage Support
-    binfmt.registrations.appimage = {
-      wrapInterpreterInShell = false;
-      interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-      recognitionType = "magic";
-      offset = 0;
-      mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-      magicOrExtension = ''\x7fELF....AI\x02'';
     };
     plymouth.enable = true;
   };
@@ -64,6 +55,7 @@
   };
 
   programs = {
+    appimage.binfmt = true;
     dconf.enable = true;
     seahorse.enable = true;
     fuse.userAllowOther = true;
@@ -88,24 +80,22 @@
     mutableUsers = true;
   };
 
+  environment.systemPackages = pkgs.callPackage ./packages.nix { };
 
-  environment.systemPackages = pkgs.callPackage ./packages.nix {};
-
-fonts = {
-  packages = with pkgs; [
-    font-awesome
-    material-icons
-    nerd-fonts.fira-code
-    nerd-fonts.geist-mono
-    montserrat
-  ];
-  fontconfig.defaultFonts = {
-    monospace = [ "GeistMono Nerd Font Mono" ];
-    sansSerif = [ "Montserrat" ];
-    serif = [ "Montserrat" ];
+  fonts = {
+    packages = with pkgs; [
+      font-awesome
+      material-icons
+      nerd-fonts.fira-code
+      nerd-fonts.geist-mono
+      montserrat
+    ];
+    fontconfig.defaultFonts = {
+      monospace = [ "GeistMono Nerd Font Mono" ];
+      sansSerif = [ "Montserrat" ];
+      serif = [ "Montserrat" ];
+    };
   };
-};
-
 
   # Extra Portal Configuration
   xdg.portal = {

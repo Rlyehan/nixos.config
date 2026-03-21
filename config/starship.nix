@@ -1,65 +1,65 @@
-{pkgs, ... }:
+{ pkgs, ... }:
 {
-programs.starship = {
+  programs.starship = {
     enable = true;
     package = pkgs.starship;
     enableZshIntegration = true;
     settings = {
-    add_newline = false;
-    c = {
+      add_newline = false;
+      c = {
         symbol = " ";
-    };
-    directory = {
+      };
+      directory = {
         read_only = " 󰌾";
-    };
-    docker_context = {
+      };
+      docker_context = {
         symbol = " ";
-    };
-    git_branch = {
+      };
+      git_branch = {
         symbol = " ";
-    };
-    golang = {
+      };
+      golang = {
         symbol = " ";
-    };
-    hg_branch = {
+      };
+      hg_branch = {
         symbol = " ";
-    };
-    hostname = {
+      };
+      hostname = {
         ssh_symbol = " ";
-    };
-    lua = {
+      };
+      lua = {
         symbol = " ";
-    };
-    memory_usage = {
+      };
+      memory_usage = {
         symbol = "󰍛 ";
-    };
-    meson = {
+      };
+      meson = {
         symbol = "󰔷 ";
-    };
-    nix_shell = {
+      };
+      nix_shell = {
         symbol = " ";
-    };
-    nodejs = {
+      };
+      nodejs = {
         symbol = " ";
-    };
-    ocaml = {
+      };
+      ocaml = {
         symbol = " ";
-    };
-    package = {
+      };
+      package = {
         symbol = "󰏗 ";
-    };
-    python = {
+      };
+      python = {
         symbol = " ";
-    };
-    rust = {
+      };
+      rust = {
         symbol = " ";
-    };
-    swift = {
+      };
+      swift = {
         symbol = " ";
-    };
-    zig = {
+      };
+      zig = {
         symbol = " ";
+      };
     };
- };
-};
+  };
 }

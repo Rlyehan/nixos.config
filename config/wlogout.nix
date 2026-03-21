@@ -24,19 +24,19 @@
       }
       {
         "label" = "suspend";
-        "action" = "sleep 1; systemctl suspend && swaylock";
+        "action" = "sleep 1; systemctl suspend && hyprlock";
         "text" = "Suspend";
         "keybind" = "u";
       }
       {
         "label" = "lock";
-        "action" = "sleep 1; swaylock";
+        "action" = "sleep 1; hyprlock";
         "text" = "Lock";
         "keybind" = "l";
       }
       {
         "label" = "hibernate";
-        "action" = "sleep 1; systemctl hibernate && swaylock";
+        "action" = "sleep 1; systemctl hibernate && hyprlock";
         "text" = "Hibernate";
         "keybind" = "h";
       }
