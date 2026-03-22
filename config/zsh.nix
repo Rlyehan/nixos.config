@@ -17,14 +17,14 @@
     '';
     shellAliases = {
       # NixOS rebuild (current config, defaults to hyprland)
-      fr = "nh os switch --hostname ${host} /home/${username}/nixos.config";
-      fu = "nh os switch --hostname ${host} --update /home/${username}/nixos.config";
+      fr = "sudo nixos-rebuild switch --flake /home/${username}/nixos.config#$(readlink /run/current-system | grep -q cosmic && echo '${host}-cosmic' || echo '${host}-hyprland')";
+      fu = "sudo nix flake update --flake /home/${username}/nixos.config && sudo nixos-rebuild switch --flake /home/${username}/nixos.config#$(readlink /run/current-system | grep -q cosmic && echo '${host}-cosmic' || echo '${host}-hyprland')";
       # Switch to Hyprland (boot — takes effect on next reboot)
-      fh = "nh os boot --hostname ${host}-hyprland /home/${username}/nixos.config";
-      fhu = "nh os boot --hostname ${host}-hyprland --update /home/${username}/nixos.config";
+      fh = "sudo nixos-rebuild boot --flake /home/${username}/nixos.config#${host}-hyprland";
+      fhu = "sudo nix flake update --flake /home/${username}/nixos.config && sudo nixos-rebuild boot --flake /home/${username}/nixos.config#${host}-hyprland";
       # Switch to COSMIC (boot — takes effect on next reboot)
-      fc = "nh os boot --hostname ${host}-cosmic /home/${username}/nixos.config";
-      fcu = "nh os boot --hostname ${host}-cosmic --update /home/${username}/nixos.config";
+      fc = "sudo nixos-rebuild boot --flake /home/${username}/nixos.config#${host}-cosmic";
+      fcu = "sudo nix flake update --flake /home/${username}/nixos.config && sudo nixos-rebuild boot --flake /home/${username}/nixos.config#${host}-cosmic";
       # Garbage collection
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       cat = "bat";
