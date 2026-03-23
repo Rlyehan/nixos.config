@@ -19,27 +19,34 @@ let
     "(red: ${builtins.toString (r / 255.0)}, green: ${builtins.toString (g / 255.0)}, blue: ${builtins.toString (b / 255.0)}, alpha: 1.0)";
 in
 {
-  home.file.".config/cosmic/com.system76.CosmicTheme.Dark/v1".text = ''
+  # COSMIC ThemeBuilder — only override the fields we care about; COSMIC derives the rest
+  home.file.".config/cosmic/com.system76.CosmicTheme.Dark.Builder/v1/bg_color".text =
+    "Some(${hexToRon colors.background})";
+  home.file.".config/cosmic/com.system76.CosmicTheme.Dark.Builder/v1/accent".text =
+    "Some(${hexToRon colors.teal})";
+  home.file.".config/cosmic/com.system76.CosmicTheme.Dark.Builder/v1/text_tint".text =
+    "Some(${hexToRon colors.foreground})";
+  home.file.".config/cosmic/com.system76.CosmicTheme.Dark.Builder/v1/neutral_tint".text =
+    "Some(${hexToRon colors.foreground})";
+  home.file.".config/cosmic/com.system76.CosmicTheme.Dark.Builder/v1/is_frosted".text =
+    "false";
+  home.file.".config/cosmic/com.system76.CosmicTheme.Dark.Builder/v1/gaps".text =
+    "(4, 4)";
+  home.file.".config/cosmic/com.system76.CosmicTheme.Dark.Builder/v1/active_hint".text =
+    "1";
+  home.file.".config/cosmic/com.system76.CosmicTheme.Dark.Builder/v1/corner_radii".text = ''
     (
-        bg_color: Some(${hexToRon colors.background}),
-        accent: Some(${hexToRon colors.teal}),
-        text_tint: Some(${hexToRon colors.foreground}),
-        neutral_tint: Some(${hexToRon colors.foreground}),
-        is_frosted: false,
-        gaps: (4, 4),
-        active_hint: 1,
-        corner_radii: (
-            radius_0: (0, 0, 0, 0),
-            radius_xs: (4, 4, 4, 4),
-            radius_s: (8, 8, 8, 8),
-            radius_m: (16, 16, 16, 16),
-            radius_l: (32, 32, 32, 32),
-            radius_xl: (160, 160, 160, 160),
-        ),
+        radius_0: (0, 0, 0, 0),
+        radius_xs: (4, 4, 4, 4),
+        radius_s: (8, 8, 8, 8),
+        radius_m: (16, 16, 16, 16),
+        radius_l: (32, 32, 32, 32),
+        radius_xl: (160, 160, 160, 160),
     )
   '';
 
-  home.file.".config/cosmic/com.system76.CosmicBackground/v1".text = ''
+  # COSMIC Background — per-key config files
+  home.file.".config/cosmic/com.system76.CosmicBackground/v1/all".text = ''
     (
         output: All,
         source: Path("/home/${username}/Pictures/Wallpapers/cool.jpg"),
@@ -51,18 +58,15 @@ in
     )
   '';
 
-  home.file.".config/cosmic/com.system76.CosmicTk/v1".text = ''
-    (
-        font_name: "Montserrat",
-        font_size: (0, 11),
-        font_weight: 400,
-        font_name_mono: "GeistMono Nerd Font Mono",
-        icon_theme_name: Some("Papirus-Dark"),
-        show_maximize: true,
-        show_minimize: true,
-        apply_theme_global: true,
-    )
-  '';
+  # COSMIC Toolkit — per-key config files
+  home.file.".config/cosmic/com.system76.CosmicTk/v1/font_name".text = ''"Montserrat"'';
+  home.file.".config/cosmic/com.system76.CosmicTk/v1/font_size".text = "(0, 11)";
+  home.file.".config/cosmic/com.system76.CosmicTk/v1/font_weight".text = "400";
+  home.file.".config/cosmic/com.system76.CosmicTk/v1/font_name_mono".text = ''"GeistMono Nerd Font Mono"'';
+  home.file.".config/cosmic/com.system76.CosmicTk/v1/icon_theme_name".text = ''Some("Papirus-Dark")'';
+  home.file.".config/cosmic/com.system76.CosmicTk/v1/show_maximize".text = "true";
+  home.file.".config/cosmic/com.system76.CosmicTk/v1/show_minimize".text = "true";
+  home.file.".config/cosmic/com.system76.CosmicTk/v1/apply_theme_global".text = "true";
 
   # COSMIC Terminal configuration
   home.file.".config/cosmic/com.system76.CosmicTerm/v1/font_name".text = ''"GeistMono Nerd Font Mono"'';
@@ -104,13 +108,40 @@ in
     }
   '';
 
-  home.file.".config/cosmic/com.system76.CosmicPanel.Panel/v1/opacity".text = "0.9";
+  home.file.".config/cosmic/com.system76.CosmicPanel.Panel/v1/opacity" = {
+    text = "0.9";
+    force = true;
+  };
 
-  home.file.".config/cosmic/com.system76.CosmicPanel.Panel/v1/background".text = let
+  home.file.".config/cosmic/com.system76.CosmicPanel.Panel/v1/background" = {
+    force = true;
+    text = let
     r = builtins.toString (lib.fromHexString (builtins.substring 1 2 colors.background) / 255.0);
     g = builtins.toString (lib.fromHexString (builtins.substring 3 2 colors.background) / 255.0);
     b = builtins.toString (lib.fromHexString (builtins.substring 5 2 colors.background) / 255.0);
   in "Color([${r}, ${g}, ${b}])";
+  };
+
+  # Display output configuration
+  # LG 5K ultrawide — scale down from 200% to 150% for usable real estate
+  home.file.".config/cosmic/com.system76.CosmicRandr/v1/outputs".text = ''
+    {
+        "DP-5": (
+            mode: (5120, 2160, 59999),
+            scale: 1.5,
+            transform: Normal,
+            position: (1920, 0),
+            enabled: true,
+        ),
+        "eDP-1": (
+            mode: (1920, 1200, 60001),
+            scale: 1.0,
+            transform: Normal,
+            position: (0, 0),
+            enabled: true,
+        ),
+    }
+  '';
 
   # COSMIC Keybindings — complete map with 5 remapped bindings from Hyprland
   # Remapped: Super+Return→Terminal, Super+W→WebBrowser, Super+T→HomeFolder,
@@ -232,6 +263,7 @@ in
         (modifiers: [Super, Shift], key: "Tab"): System(WindowSwitcherPrevious),
 
         (modifiers: [], key: "Print"): System(Screenshot),
+        (modifiers: [Super, Shift], key: "s"): System(Screenshot),
         (modifiers: [], key: "XF86AudioRaiseVolume"): System(VolumeRaise),
         (modifiers: [], key: "XF86AudioLowerVolume"): System(VolumeLower),
         (modifiers: [], key: "XF86AudioMute"): System(Mute),
@@ -252,7 +284,10 @@ in
   home.file.".config/cosmic/com.system76.CosmicComp/v1/xdg_shell_default_terminal".text = ''"ghostty"'';
 
   # Smaller dock
-  home.file.".config/cosmic/com.system76.CosmicPanel.Dock/v1/size".text = "XS";
+  home.file.".config/cosmic/com.system76.CosmicPanel.Dock/v1/size" = {
+    text = "S";
+    force = true;
+  };
 
   # Touchpad: natural (inverted) scroll; mice unaffected
   home.file.".config/cosmic/com.system76.CosmicComp/v1/input_touchpad".text = ''
