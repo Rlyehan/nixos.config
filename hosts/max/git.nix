@@ -4,6 +4,8 @@
   programs.git = {
     enable = true;
 
+    signing.format = null; # new 25.05 default
+
     includes = [
       {
         condition = "gitdir:~/work/";

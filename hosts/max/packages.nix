@@ -95,7 +95,4 @@ with pkgs;
 
   # Communication Tools
   slack
-
-  # Notetaking Apps
-  obsidian
 ]
