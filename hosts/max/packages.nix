@@ -31,6 +31,11 @@ with pkgs;
   clickhouse
   kiro
   kiro-cli
+  nodejs_25
+  tsx
+  uv
+  rustup
+  neovim
 
   # System Utilities
   wget
@@ -76,7 +81,7 @@ with pkgs;
   # Multimedia Tools
   pavucontrol
   playerctl
-  tidal-hifi
+  obsidian
 
   # Wayland/Desktop Environment Tools
   lxqt.lxqt-policykit
@@ -95,4 +100,5 @@ with pkgs;
 
   # Communication Tools
   slack
+  teams-for-linux
 ]

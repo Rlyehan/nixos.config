@@ -46,17 +46,20 @@ in
   '';
 
   # COSMIC Background — per-key config files
-  home.file.".config/cosmic/com.system76.CosmicBackground/v1/all".text = ''
-    (
-        output: All,
-        source: Path("/home/${username}/Pictures/Wallpapers/cool.jpg"),
-        filter_by_theme: false,
-        rotation_frequency: 300,
-        filter_method: Lanczos,
-        scaling_mode: Zoom,
-        sampling_method: Alphanumeric,
-    )
-  '';
+  home.file.".config/cosmic/com.system76.CosmicBackground/v1/all" = {
+    force = true;
+    text = ''
+      (
+          output: All,
+          source: Path("/home/${username}/Pictures/Wallpapers/cool.jpg"),
+          filter_by_theme: false,
+          rotation_frequency: 300,
+          filter_method: Lanczos,
+          scaling_mode: Zoom,
+          sampling_method: Alphanumeric,
+      )
+    '';
+  };
 
   # COSMIC Toolkit — per-key config files
   home.file.".config/cosmic/com.system76.CosmicTk/v1/font_name".text = ''"Montserrat"'';
@@ -317,6 +320,7 @@ in
 
   programs.firefox = {
     enable = true;
+    configPath = ".mozilla/firefox"; # keep legacy path
     profiles.default = {
       settings = {
         "widget.gtk.libadwaita-colors.enabled" = false;
