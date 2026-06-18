@@ -327,6 +327,12 @@ in
       "Mod+Shift+8".action.move-column-to-workspace = "8";
       "Mod+Shift+9".action.move-column-to-workspace = "9";
 
+      # Workspace cycling with PageUp/PageDown
+      "Ctrl+Page_Up".action = focus-workspace-up;
+      "Ctrl+Page_Down".action = focus-workspace-down;
+      "Ctrl+Shift+Page_Up".action = move-column-to-workspace-up;
+      "Ctrl+Shift+Page_Down".action = move-column-to-workspace-down;
+
       # Scrollable-tiling column controls
       "Mod+BracketLeft".action = consume-or-expel-window-left;
       "Mod+BracketRight".action = consume-or-expel-window-right;

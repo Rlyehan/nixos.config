@@ -16,15 +16,18 @@
       #fi
     '';
     shellAliases = {
-      # NixOS rebuild (current config, defaults to hyprland)
-      fr = "sudo nixos-rebuild switch --flake /home/${username}/nixos.config#$(readlink /run/current-system | grep -q cosmic && echo '${host}-cosmic' || echo '${host}-hyprland')";
-      fu = "sudo nix flake update --flake /home/${username}/nixos.config && sudo nixos-rebuild switch --flake /home/${username}/nixos.config#$(readlink /run/current-system | grep -q cosmic && echo '${host}-cosmic' || echo '${host}-hyprland')";
+      # NixOS rebuild (current config, auto-detects active DE)
+      fr = "sudo nixos-rebuild switch --flake /home/${username}/nixos.config#$(readlink /run/current-system | grep -q cosmic && echo '${host}-cosmic' || (readlink /run/current-system | grep -q niri && echo '${host}-niri' || echo '${host}-hyprland'))";
+      fu = "sudo nix flake update --flake /home/${username}/nixos.config && sudo nixos-rebuild switch --flake /home/${username}/nixos.config#$(readlink /run/current-system | grep -q cosmic && echo '${host}-cosmic' || (readlink /run/current-system | grep -q niri && echo '${host}-niri' || echo '${host}-hyprland'))";
       # Switch to Hyprland (boot — takes effect on next reboot)
       fh = "sudo nixos-rebuild boot --flake /home/${username}/nixos.config#${host}-hyprland";
       fhu = "sudo nix flake update --flake /home/${username}/nixos.config && sudo nixos-rebuild boot --flake /home/${username}/nixos.config#${host}-hyprland";
       # Switch to COSMIC (boot — takes effect on next reboot)
       fc = "sudo nixos-rebuild boot --flake /home/${username}/nixos.config#${host}-cosmic";
       fcu = "sudo nix flake update --flake /home/${username}/nixos.config && sudo nixos-rebuild boot --flake /home/${username}/nixos.config#${host}-cosmic";
+      # Switch to niri (boot — takes effect on next reboot)
+      fn = "sudo nixos-rebuild boot --flake /home/${username}/nixos.config#${host}-niri";
+      fnu = "sudo nix flake update --flake /home/${username}/nixos.config && sudo nixos-rebuild boot --flake /home/${username}/nixos.config#${host}-niri";
       # Garbage collection
       ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       cat = "bat";
