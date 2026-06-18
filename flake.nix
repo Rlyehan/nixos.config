@@ -5,6 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Nix-native niri config + NixOS module (build-time validated KDL)
+    niri.url = "github:sodiboo/niri-flake";
+    niri.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -56,6 +60,10 @@
             ./hosts/${host}/cosmic-system.nix
           ];
           homeModules = [ ./hosts/${host}/cosmic-home.nix ];
+        };
+        "max-niri" = mkHost {
+          systemModules = [ ./hosts/${host}/niri-system.nix ];
+          homeModules = [ ./hosts/${host}/niri-home.nix ];
         };
       };
     in

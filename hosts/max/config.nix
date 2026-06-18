@@ -54,6 +54,70 @@
     LC_TIME = "de_AT.UTF-8";
   };
 
+  # Dynamic linker for prebuilt/FHS binaries (Cursor, JetBrains, npm native modules, etc.)
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      # Core C/C++ runtime
+      stdenv.cc.cc.lib
+      glibc
+
+      # Compression / crypto / networking
+      zlib
+      openssl
+      curl
+      libgit2
+      icu
+
+      # Graphics / GUI (Electron apps, etc.)
+      glib
+      nss
+      nspr
+      atk
+      cups
+      dbus
+      gtk3
+      gtk4
+      pango
+      cairo
+      libdrm
+      mesa
+      vulkan-loader
+      libX11
+      libXcomposite
+      libXdamage
+      libXext
+      libXfixes
+      libXrandr
+      libxcb
+      libXcursor
+      libxi
+      libxrender
+      libxtst
+      libxscrnsaver
+      libxkbcommon
+      wayland
+
+      # Audio
+      alsa-lib
+      pipewire
+      libpulseaudio
+
+      # Common native deps for Node/Python/Rust
+      expat
+      libffi
+      readline
+      sqlite
+      bzip2
+      xz
+      ncurses
+      libxml2
+      libxslt
+      libuuid
+      systemd
+    ];
+  };
+
   programs = {
     appimage.binfmt = true;
     dconf.enable = true;
@@ -106,6 +170,11 @@
     configPackages = [
       pkgs.xdg-desktop-portal-gtk
     ];
+    # Route the file picker through gtk on niri (xdg-desktop-portal-gnome
+    # otherwise tries to use Nautilus, which is not installed).
+    config.niri = {
+      "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+    };
   };
 
   # Services to start

@@ -31,11 +31,32 @@ with pkgs;
   clickhouse
   kiro
   kiro-cli
-  nodejs_25
+  nodejs
   tsx
   uv
   rustup
   neovim
+  llama-cpp
+  pi-coding-agent
+  lmstudio
+  duckdb
+  opencode
+
+  # Base dev libraries (system-wide so devbox/direnv layers on top)
+  gcc
+  gnumake
+  cmake
+  openssl
+  openssl.dev
+  pkg-config
+  python3
+  python3Packages.pip
+  python3Packages.virtualenv
+  go
+  docker-compose
+  sqlite
+  postgresql
+  redis
 
   # System Utilities
   wget
@@ -60,6 +81,7 @@ with pkgs;
   gnupg
   ktailctl
   devbox
+  steam-run # FHS escape hatch for stubborn binaries
 
   # GTK and Theme Support
   dconf
@@ -82,6 +104,7 @@ with pkgs;
   pavucontrol
   playerctl
   obsidian
+  mpv
 
   # Wayland/Desktop Environment Tools
   lxqt.lxqt-policykit

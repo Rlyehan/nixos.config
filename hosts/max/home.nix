@@ -18,6 +18,7 @@ in
   imports = [
     ../../config/starship.nix
     ../../config/zsh.nix
+    ../../config/zed.nix
     ./git.nix
   ];
 
