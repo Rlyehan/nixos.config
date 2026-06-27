@@ -51,10 +51,6 @@
         };
 
       configs = {
-        "max-hyprland" = mkHost {
-          systemModules = [ ./hosts/${host}/hyprland-system.nix ];
-          homeModules = [ ./hosts/${host}/hyprland-home.nix ];
-        };
         "max-cosmic" = mkHost {
           systemModules = [
             ./hosts/${host}/cosmic-system.nix
@@ -69,7 +65,7 @@
     in
     {
       nixosConfigurations = configs // {
-        "max" = configs."max-hyprland";
+        "max" = configs."max-niri";
       };
     };
 }

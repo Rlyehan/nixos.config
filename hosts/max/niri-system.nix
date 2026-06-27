@@ -32,18 +32,30 @@
     settings = {
       default_session = {
         user = username;
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${pkgs.niri}/bin/niri-session";
       };
     };
   };
 
-  # XWayland support for X11-only apps. niri integrates xwayland-satellite when
-  # it is available; we also start it explicitly from the niri config.
+  # XWayland support for X11-only apps. Since niri 25.08 the integration is
+  # automatic: niri exports $DISPLAY and spawns/restarts xwayland-satellite on
+  # demand, so we only need the binary on PATH (no manual spawn in niri.nix).
   environment.systemPackages = [ pkgs.xwayland-satellite ];
+
+  # Register niri's systemd user unit (`$out/lib/systemd/user/niri.service`) so
+  # niri-session can start it via `systemctl --user start niri.service`. The
+  # niri-flake module only adds niri to environment.systemPackages and
+  # services.displayManager.sessionPackages, neither of which registers the
+  # user unit — so this line is REQUIRED, not redundant. Without it the
+  # session fails to start.
+  systemd.packages = [ pkgs.niri ];
 
   # Without this, NixOS injects a stripped PATH via Environment= on the niri
   # systemd unit, which shadows the user-manager PATH and causes spawned apps
   # to not find binaries. Disabling the default lets niri inherit the full PATH
   # set up by niri-session.
-  systemd.user.services.niri.enableDefaultPath = false;
+  systemd.user.services.niri = {
+    enableDefaultPath = false;
+    restartIfChanged = false;
+  };
 }

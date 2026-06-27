@@ -73,6 +73,9 @@ in
           x = 1920;
           y = 0;
         };
+        # Enable VRR (Adaptive Sync) only when a window opts in via the
+        # variable-refresh-rate window rule below (e.g. video players).
+        variable-refresh-rate = "on-demand";
       };
       "eDP-1" = {
         mode = {
@@ -108,6 +111,14 @@ in
       };
     };
 
+    # ---- Cursor --------------------------------------------------------------
+    # Laptop niceties: hide the cursor while typing and after a period of
+    # inactivity so it doesn't sit on top of what you're reading.
+    cursor = {
+      hide-when-typing = true;
+      hide-after-inactive-ms = 5000;
+    };
+
     # ---- Environment ---------------------------------------------------------
     # Variables for processes spawned by niri (Wayland-native apps, etc.)
     environment = {
@@ -121,11 +132,13 @@ in
     # ---- Startup -------------------------------------------------------------
     # niri-flake runs the polkit agent itself, and waybar is started as a
     # systemd user service (see waybar-niri.nix), so neither is spawned here.
+    # xwayland-satellite is NOT spawned here: since niri 25.08 it is integrated
+    # out of the box (niri exports $DISPLAY and spawns/restarts it on demand);
+    # the binary just needs to be on PATH (see niri-system.nix).
     spawn-at-startup = [
       { argv = [ "swaync" ]; }
       { argv = [ "nm-applet" "--indicator" ]; }
       { argv = [ "awww-daemon" ]; }
-      { argv = [ "xwayland-satellite" ]; }
       # waybar is a systemd service; clear any failed state so it starts.
       { sh = "systemctl --user reset-failed waybar.service"; }
       # Set the wallpaper once the daemon is up.
@@ -145,16 +158,20 @@ in
     # ---- Named workspaces ----------------------------------------------------
     # Persistent, ordered workspaces so pinned apps land consistently and
     # Mod+<n> always maps to the same workspace (closer to the Hyprland feel).
+    # open-on-output pins each workspace to a monitor: 1-7 on the LG 5K (DP-5),
+    # 8-9 on the laptop panel (eDP-1). When DP-5 is disconnected (undocked),
+    # niri ignores the missing output and falls back to the connected one, so
+    # this is safe on the go. Adjust the split to taste.
     workspaces = {
-      "1" = { };
-      "2" = { };
-      "3" = { };
-      "4" = { };
-      "5" = { };
-      "6" = { };
-      "7" = { };
-      "8" = { };
-      "9" = { };
+      "1".open-on-output = "DP-5";
+      "2".open-on-output = "DP-5";
+      "3".open-on-output = "DP-5";
+      "4".open-on-output = "DP-5";
+      "5".open-on-output = "DP-5";
+      "6".open-on-output = "DP-5";
+      "7".open-on-output = "DP-5";
+      "8".open-on-output = "eDP-1";
+      "9".open-on-output = "eDP-1";
     };
 
     # ---- Layout / styling (matches the Hyprland teal theme) ------------------
@@ -190,6 +207,20 @@ in
         };
         color = "#1a1a1aee";
       };
+
+      # Tab indicator for tabbed columns (Mod+Shift+I), themed teal to match
+      # the border/focus styling.
+      tab-indicator = {
+        active = teal;
+        inactive.color = "#354547";
+      };
+    };
+
+    # ---- Overview ------------------------------------------------------------
+    # Theme the overview (Mod+O) backdrop with the dark base color so it
+    # blends with the shadow/border palette.
+    overview = {
+      backdrop-color = "#1a1a1a";
     };
 
     # ---- Animations ----------------------------------------------------------
@@ -246,6 +277,23 @@ in
         matches = [ { app-id = "^com\\.mitchellh\\.ghostty$"; } ];
         open-on-workspace = "4";
       }
+      # Opt these windows into VRR on outputs set to "on-demand" (DP-5).
+      {
+        matches = [
+          { app-id = "^mpv$"; }
+          { app-id = "^vlc$"; }
+        ];
+        variable-refresh-rate = true;
+      }
+      # Block sensitive chats from screencasts (still screenshot-able). Use
+      # "screen-capture" instead if you also want them hidden from wlr-screencopy.
+      {
+        matches = [
+          { app-id = "^[Ss]lack$"; }
+          { app-id = "^signal$"; }
+        ];
+        block-out-from = "screencast";
+      }
     ];
 
     # ---- Key bindings (aligned with the Hyprland bindings) -------------------
@@ -253,16 +301,26 @@ in
       "Mod+Shift+Slash".action = show-hotkey-overlay;
 
       # Launchers
-      "Mod+Return".action = spawn "ghostty";
-      "Mod+Shift+Return".action = spawn "rofi-launcher";
+      "Mod+Return" = {
+        repeat = false;
+        action = spawn "ghostty";
+      };
+      "Mod+Space" = {
+        repeat = false;
+        action = spawn "rofi-launcher";
+      };
+      "Mod+Shift+Return" = {
+        repeat = false;
+        action = spawn "rofi-launcher";
+      };
       "Mod+W".action = spawn "brave";
       "Mod+T".action = spawn "thunar";
       "Mod+S".action = spawn "screenshootin";
 
       # Window management
       "Mod+Q".action = close-window;
-      "Mod+F".action = maximize-column;
-      "Mod+Shift+F".action = fullscreen-window;
+      "Mod+F".action = fullscreen-window;
+      "Mod+Shift+F".action = maximize-column;
       "Mod+V".action = toggle-window-floating;
       "Mod+Shift+I".action = toggle-column-tabbed-display;
       "Mod+Shift+C".action = quit;

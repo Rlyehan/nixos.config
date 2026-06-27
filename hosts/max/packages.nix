@@ -10,6 +10,7 @@ with pkgs;
   meson
   pkg-config
   nixfmt
+  ruff # Python linter + formatter (Rust binary, global on PATH)
   nh
   libz
   lazygit
@@ -112,7 +113,7 @@ with pkgs;
   swappy
   hyprpicker
   swaynotificationcenter
-  swww
+  awww
   grim
   slurp
   tuigreet
@@ -124,4 +125,5 @@ with pkgs;
   # Communication Tools
   slack
   teams-for-linux
+  signal-desktop
 ]
