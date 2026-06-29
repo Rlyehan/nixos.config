@@ -130,23 +130,12 @@ in
     };
 
     # ---- Startup -------------------------------------------------------------
-    # niri-flake runs the polkit agent itself, and waybar is started as a
-    # systemd user service (see waybar-niri.nix), so neither is spawned here.
-    # xwayland-satellite is NOT spawned here: since niri 25.08 it is integrated
-    # out of the box (niri exports $DISPLAY and spawns/restarts it on demand);
-    # the binary just needs to be on PATH (see niri-system.nix).
     spawn-at-startup = [
       { argv = [ "swaync" ]; }
       { argv = [ "nm-applet" "--indicator" ]; }
       { argv = [ "awww-daemon" ]; }
-      # waybar is a systemd service; clear any failed state so it starts.
       { sh = "systemctl --user reset-failed waybar.service"; }
-      # Set the wallpaper once the daemon is up.
       { sh = "sleep 2 && awww img /home/${username}/Pictures/Wallpapers/cool.jpg"; }
-      # Pinned applications (placed on workspaces via window-rules below).
-      { argv = [ "slack" ]; }
-      { argv = [ "brave" ]; }
-      { argv = [ "ghostty" ]; }
     ];
 
     # Ask clients to drop client-side decorations so niri draws clean borders.
@@ -154,25 +143,6 @@ in
 
     # Don't show the hotkey overlay every time niri starts.
     hotkey-overlay.skip-at-startup = true;
-
-    # ---- Named workspaces ----------------------------------------------------
-    # Persistent, ordered workspaces so pinned apps land consistently and
-    # Mod+<n> always maps to the same workspace (closer to the Hyprland feel).
-    # open-on-output pins each workspace to a monitor: 1-7 on the LG 5K (DP-5),
-    # 8-9 on the laptop panel (eDP-1). When DP-5 is disconnected (undocked),
-    # niri ignores the missing output and falls back to the connected one, so
-    # this is safe on the go. Adjust the split to taste.
-    workspaces = {
-      "1".open-on-output = "DP-5";
-      "2".open-on-output = "DP-5";
-      "3".open-on-output = "DP-5";
-      "4".open-on-output = "DP-5";
-      "5".open-on-output = "DP-5";
-      "6".open-on-output = "DP-5";
-      "7".open-on-output = "DP-5";
-      "8".open-on-output = "eDP-1";
-      "9".open-on-output = "eDP-1";
-    };
 
     # ---- Layout / styling (matches the Hyprland teal theme) ------------------
     layout = {
@@ -264,19 +234,6 @@ in
         matches = [ { app-id = "^[Bb]rave"; } ];
         opacity = 0.95;
       }
-      # Pin apps to workspaces (Slack -> 1, Brave -> 2, Ghostty -> 4).
-      {
-        matches = [ { app-id = "^[Ss]lack$"; } ];
-        open-on-workspace = "1";
-      }
-      {
-        matches = [ { app-id = "^[Bb]rave"; } ];
-        open-on-workspace = "2";
-      }
-      {
-        matches = [ { app-id = "^com\\.mitchellh\\.ghostty$"; } ];
-        open-on-workspace = "4";
-      }
       # Opt these windows into VRR on outputs set to "on-demand" (DP-5).
       {
         matches = [
@@ -319,8 +276,8 @@ in
 
       # Window management
       "Mod+Q".action = close-window;
-      "Mod+F".action = fullscreen-window;
-      "Mod+Shift+F".action = maximize-column;
+      "Mod+F".action = maximize-column;
+      "Mod+Shift+F".action = fullscreen-window;
       "Mod+V".action = toggle-window-floating;
       "Mod+Shift+I".action = toggle-column-tabbed-display;
       "Mod+Shift+C".action = quit;
@@ -366,24 +323,24 @@ in
       "Mod+Ctrl+Shift+J".action = move-column-to-monitor-down;
 
       # Workspaces by name
-      "Mod+1".action = focus-workspace "1";
-      "Mod+2".action = focus-workspace "2";
-      "Mod+3".action = focus-workspace "3";
-      "Mod+4".action = focus-workspace "4";
-      "Mod+5".action = focus-workspace "5";
-      "Mod+6".action = focus-workspace "6";
-      "Mod+7".action = focus-workspace "7";
-      "Mod+8".action = focus-workspace "8";
-      "Mod+9".action = focus-workspace "9";
-      "Mod+Shift+1".action.move-column-to-workspace = "1";
-      "Mod+Shift+2".action.move-column-to-workspace = "2";
-      "Mod+Shift+3".action.move-column-to-workspace = "3";
-      "Mod+Shift+4".action.move-column-to-workspace = "4";
-      "Mod+Shift+5".action.move-column-to-workspace = "5";
-      "Mod+Shift+6".action.move-column-to-workspace = "6";
-      "Mod+Shift+7".action.move-column-to-workspace = "7";
-      "Mod+Shift+8".action.move-column-to-workspace = "8";
-      "Mod+Shift+9".action.move-column-to-workspace = "9";
+      "Mod+1".action = focus-workspace 1;
+      "Mod+2".action = focus-workspace 2;
+      "Mod+3".action = focus-workspace 3;
+      "Mod+4".action = focus-workspace 4;
+      "Mod+5".action = focus-workspace 5;
+      "Mod+6".action = focus-workspace 6;
+      "Mod+7".action = focus-workspace 7;
+      "Mod+8".action = focus-workspace 8;
+      "Mod+9".action = focus-workspace 9;
+      "Mod+Shift+1".action.move-column-to-workspace = 1;
+      "Mod+Shift+2".action.move-column-to-workspace = 2;
+      "Mod+Shift+3".action.move-column-to-workspace = 3;
+      "Mod+Shift+4".action.move-column-to-workspace = 4;
+      "Mod+Shift+5".action.move-column-to-workspace = 5;
+      "Mod+Shift+6".action.move-column-to-workspace = 6;
+      "Mod+Shift+7".action.move-column-to-workspace = 7;
+      "Mod+Shift+8".action.move-column-to-workspace = 8;
+      "Mod+Shift+9".action.move-column-to-workspace = 9;
 
       # Workspace cycling with PageUp/PageDown
       "Ctrl+Page_Up".action = focus-workspace-up;
