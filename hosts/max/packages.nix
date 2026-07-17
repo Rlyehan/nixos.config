@@ -14,7 +14,6 @@ with pkgs;
   nh
   libz
   lazygit
-  mongodb-compass
   awscli
   podman-compose
   podman-tui
