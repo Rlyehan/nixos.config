@@ -2,6 +2,7 @@
   pkgs,
   username,
   host,
+  inputs,
   ...
 }:
 let
@@ -20,9 +21,21 @@ in
     ../../config/zsh.nix
     ../../config/zed.nix
     ./git.nix
+    ./kiro-5g.nix
+    ./kiro-crew.nix
+    ./aidlc.nix
   ];
 
   # Place Files Inside Home Directory
+  # KiroCrew looks for kiro-cli in ~/.local/bin and ~/.cargo/bin before PATH, and
+  # it launches the CLI inside its own user-namespace sandbox. The nixpkgs
+  # `kiro-cli` is a buildFHSEnv (bubblewrap) wrapper, which cannot nest inside
+  # that sandbox — it exits 1 and KiroCrew reports the CLI as "not installed".
+  # The unwrapped binary needs only glibc/libgcc, both present in the FHS the
+  # AppImage runs in, so point KiroCrew at it directly. The FHS-wrapped
+  # `kiro-cli` in home.packages below stays as the interactive command.
+  home.file.".local/bin/kiro-cli".source = "${pkgs.kiro-cli.unwrapped}/bin/kiro-cli";
+
   home.file."Pictures/Wallpapers" = {
     source = ../../config/wallpapers;
     recursive = true;
@@ -134,6 +147,10 @@ in
     pkgs.papirus-icon-theme
     pkgs.hicolor-icon-theme
     pkgs.elementary-xfce-icon-theme
+
+    # Herdr — drive/connect to coding agents on this and remote machines.
+    # Built from the pinned upstream flake input (see flake.nix).
+    inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   programs = {

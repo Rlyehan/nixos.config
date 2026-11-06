@@ -139,6 +139,11 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  # Obsidian 1.14.5/1.15.x crashes on Electron 43 (the 2026-11-03 nixpkgs bump):
+  # its renderer calls a `webFrame` API Electron 43 removed. Pin obsidian to
+  # electron_42 (see hosts/max/packages.nix); electron_42 is EOL-flagged, so
+  # permit it. Revisit when nixpkgs ships an obsidian build matched to e43+.
+  nixpkgs.config.permittedInsecurePackages = [ "electron-42.11.18" ];
 
   users = {
     mutableUsers = true;
@@ -245,6 +250,9 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
+
+  # QMK keyboard flashing (udev rules for DFU bootloader + OLKB/Drop PIDs)
+  hardware.keyboard.qmk.enable = true;
 
   # Security / Polkit
   security.rtkit.enable = true;

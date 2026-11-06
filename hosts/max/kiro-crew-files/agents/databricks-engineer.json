@@ -1,0 +1,52 @@
+{
+  "name": "databricks-engineer",
+  "description": "Databricks data engineer \u2014 manage pipelines, jobs, Unity Catalog, run SQL on warehouses, explore schemas. Full Databricks workspace access via prod profile.",
+  "tools": [
+    "execute_bash",
+    "fs_read",
+    "fs_write",
+    "grep",
+    "glob",
+    "web_fetch",
+    "web_search",
+    "introspect",
+    "tool_search",
+    "@kirocrew-core",
+    "@databricks"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "grep",
+    "glob",
+    "web_fetch",
+    "web_search",
+    "introspect",
+    "@kirocrew-core",
+    "@databricks"
+  ],
+  "resources": [
+    "file://.kiro/steering/**/*.md",
+    "skill://~/.kiro/skills/databricks-core/SKILL.md",
+    "skill://~/.kiro/skills/databricks-pipelines/SKILL.md",
+    "skill://~/.kiro/skills/databricks-jobs/SKILL.md",
+    "skill://~/.kiro/skills/databricks-dbsql/SKILL.md",
+    "skill://~/.kiro/skills/databricks-unity-catalog/SKILL.md",
+    "skill://~/.kiro/skills/databricks-dabs/SKILL.md",
+    "skill://~/.kiro/skills/databricks-execution-compute/SKILL.md",
+    "skill://~/.kiro/skills/databricks-data-discovery/SKILL.md",
+    "skill://~/.kiro/skills/aidlc-workflow/SKILL.md"
+  ],
+  "mcpServers": {
+    "databricks": {
+      "command": "/home/max/.ai-dev-kit/.venv/bin/python",
+      "args": [
+        "/home/max/.ai-dev-kit/repo/databricks-mcp-server/run_server.py"
+      ],
+      "env": {
+        "DATABRICKS_CONFIG_PROFILE": "prod"
+      },
+      "disabled": false
+    }
+  },
+  "includeMcpJson": false
+}

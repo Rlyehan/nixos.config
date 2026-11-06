@@ -1,0 +1,49 @@
+{
+  "name": "jira-confluence",
+  "description": "Atlassian specialist \u2014 search Jira issues, read Confluence pages, look up documentation. Uses OAuth-cached Atlassian MCP.",
+  "tools": [
+    "fs_read",
+    "grep",
+    "glob",
+    "web_fetch",
+    "web_search",
+    "introspect",
+    "tool_search",
+    "@kirocrew-core",
+    "@atlassian"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "grep",
+    "glob",
+    "web_fetch",
+    "web_search",
+    "introspect",
+    "@kirocrew-core",
+    "@atlassian"
+  ],
+  "resources": [
+    "file://.kiro/steering/**/*.md"
+  ],
+  "mcpServers": {
+    "atlassian": {
+      "command": "/run/current-system/sw/bin/npx",
+      "disabled": false,
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.atlassian.com/v1/mcp"
+      ],
+      "autoApprove": [
+        "getConfluencePage",
+        "searchConfluenceUsingCql",
+        "searchJiraIssuesUsingJql",
+        "getJiraIssue",
+        "getConfluencePageDescendants",
+        "atlassianUserInfo",
+        "getAccessibleAtlassianResources"
+      ]
+    }
+  },
+  "includeMcpJson": false
+}

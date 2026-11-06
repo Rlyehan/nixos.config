@@ -1,0 +1,50 @@
+{
+  "name": "clickhouse-analyst",
+  "description": "ClickHouse data analyst \u2014 query, explore schemas, check data freshness, investigate anomalies. Read-only access to the ClickHouse cluster.",
+  "tools": [
+    "execute_bash",
+    "fs_read",
+    "fs_write",
+    "grep",
+    "glob",
+    "web_fetch",
+    "web_search",
+    "introspect",
+    "tool_search",
+    "@kirocrew-core",
+    "@mcp-clickhouse"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "grep",
+    "glob",
+    "web_fetch",
+    "web_search",
+    "introspect",
+    "@kirocrew-core",
+    "@mcp-clickhouse"
+  ],
+  "resources": [
+    "file://.kiro/steering/**/*.md",
+    "skill://~/.kiro/skills/clickhouse-best-practices/SKILL.md",
+    "skill://~/.kiro/skills/clickhouse-architecture-advisor/SKILL.md"
+  ],
+  "mcpServers": {
+    "mcp-clickhouse": {
+      "command": "/home/max/work/clickhouse_queries/.mcp-venv/bin/mcp-clickhouse",
+      "args": [],
+      "env": {
+        "CLICKHOUSE_HOST": "${CLICKHOUSE_HOST}",
+        "CLICKHOUSE_PORT": "8443",
+        "CLICKHOUSE_USER": "${CLICKHOUSE_USER}",
+        "CLICKHOUSE_PASSWORD": "${CLICKHOUSE_PASSWORD}",
+        "CLICKHOUSE_SECURE": "true",
+        "CLICKHOUSE_VERIFY": "true",
+        "CLICKHOUSE_CONNECT_TIMEOUT": "30",
+        "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "300"
+      },
+      "disabled": false
+    }
+  },
+  "includeMcpJson": false
+}

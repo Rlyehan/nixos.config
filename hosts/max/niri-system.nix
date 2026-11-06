@@ -11,6 +11,10 @@
   # fonts, and a PAM entry for swaylock.
   imports = [ inputs.niri.nixosModules.niri ];
 
+  # NOTE: the old libdisplay-info 0.3 pin overlay was removed — nixpkgs' niri
+  # now takes an explicit `libdisplay-info_0_3` argument, so the version
+  # conflict with libdisplay-info 0.4.0 is fixed upstream.
+
   programs.niri = {
     enable = true;
     # Use the nixpkgs build so we share the system cache and closure instead

@@ -9,6 +9,11 @@
     # Nix-native niri config + NixOS module (build-time validated KDL)
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Herdr — terminal multiplexer for driving remote coding agents.
+    # Official flake builds from source; pin to a release tag (not master).
+    herdr.url = "github:herdrdev/herdr/v0.9.5";
+    herdr.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
