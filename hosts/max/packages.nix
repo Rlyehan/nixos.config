@@ -51,6 +51,7 @@ with pkgs;
   ruff # Python linter + formatter (Rust binary, global on PATH)
   ast-grep # structural (AST) code search / lint / rewrite - custom rules for the dev-loop gate (Tech Radar Vol 35 #73)
   vale # prose linter for specs / ADRs / docs, CI-enforceable (Tech Radar Vol 35 #101)
+  gettext # provides envsubst, required by kiro-crew-config sync.sh push (secret/${VAR} rendering)
   nh
   libz
   lazygit

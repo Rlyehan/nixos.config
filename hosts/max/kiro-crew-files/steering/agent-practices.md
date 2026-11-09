@@ -25,6 +25,27 @@ LINK to the rest rather than inlining it. Prefer looking a thing up (a doc, a
 file, an MCP tool) at the point of use over front-loading it into context. This
 cuts tokens and context rot.
 
+## Writing for agents — the pointer, not the target, decides loading
+When you author a skill, steering file, or any doc an agent reaches by a
+reference, the *wording of the pointer* (a skill `description`/`triggers`, a line
+naming a doc) — not its target — decides whether and how reliably the agent
+loads it. A must-have behind a weak pointer is a variance bug: sharpen the
+wording before you consider inlining the material. Complements #5 (which says
+*where* to put detail); this says *how to word the reference that reaches it*.
+- **Front-load the trigger word** and give one trigger per genuinely distinct
+  case; synonyms that rename one case are bloat, not coverage.
+- **Prompt the positive, not the prohibition.** "Write one-line comments" beats
+  "don't write long comments" — a ban drags the banned behaviour into context and
+  half-reads as an instruction to do it. Reserve a negation for a hard guardrail
+  you can't phrase positively, and pair it with the positive target.
+- **Lean on leading words** — a compact concept the model already holds (*tight*,
+  *red*, *lesson*) anchors a region of behaviour in one token; repeat the token,
+  never restate its meaning.
+- **Kill no-ops.** An instruction a current model already obeys by default pays
+  tokens to say nothing — delete the whole sentence (ties into #36). The test is
+  model-relative: settle it by running the doc, not by debate.
+(idea from mattpocock/skills, MIT)
+
 ## Risk-tiered human oversight — match review to blast radius (#17)
 Scale caution to what a change could break; don't review everything with the
 same intensity (that is just theater). Low-risk, reversible changes (a local

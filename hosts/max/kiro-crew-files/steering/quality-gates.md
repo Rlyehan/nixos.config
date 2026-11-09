@@ -1,7 +1,7 @@
 ---
 inclusion: auto
 name: quality-gates
-description: documentation and quality standards to apply across all work
+description: documentation and quality standards for coding, code review, and technical-documentation work
 ---
 
 # Quality & Documentation Standards
@@ -31,9 +31,15 @@ suggestion. These are deterministic (no extra LLM) and complement ruff/mypy.
   the metric. Exit 1 = a real finding to fix; exit 2 = a broken tool (fix it,
   do not treat the change as checked). Never `habit-snooze` without Max's
   explicit approval.
-- **ast-grep** — for custom structural rules a linter can't express, run
-  `ast-grep scan` against the repo's `sgconfig.yml` and fix matches on the
-  files the change touched.
+- **ast-grep** — structural (AST) rules for bug classes ruff/mypy miss. This
+  repo ships a ready ruleset in `ast-grep/` (`sgconfig.yml` + `rules/*.yml`):
+  swallowed-exception, print-in-source, boolean-flag-param — all drawn from
+  `python-conventions.md`. Run `ast-grep scan -c ast-grep/sgconfig.yml <changed
+  files>` and fix matches at the cause (log/handle the exception, switch print
+  to logging, split the boolean-flag function); don't game the pattern. The
+  dev-loop gate runs this advisory step automatically on changed files. Always
+  invoke `ast-grep`, never the `sg` alias (on NixOS `sg` is the setgid wrapper).
+  See `ast-grep/README.md` to add rules.
 - **vale** — run `vale <file>` on specs/ADRs/PR descriptions before handing
   them over; fix flagged prose. (Needs `vale sync` once per repo to fetch styles.)
 
