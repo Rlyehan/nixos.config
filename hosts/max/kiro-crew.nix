@@ -125,9 +125,32 @@ let
     PY
   '';
 
+  # Aikido Safe Chain (Tech Radar Vol 35 #99) — supply-chain install blocker.
+  # Option B: setup-ci PATH shims, so NON-INTERACTIVE Kiro Crew *agent* installs
+  # (uv/npm/pip run by workers) are routed through safe-chain's malware proxy,
+  # not just the interactive terminal. Pinned; re-run on rebuild. See the trial
+  # + apply/verify guide: ~/.kiro/crew/workspace-member-setup/safe-chain-optionB.md
+  safeChainVersion = "1.5.27";
+
+  # The generated shims exec `safe-chain`; it must resolve on PATH or they fall
+  # through to the real tool UNPROTECTED. Provide it as a pinned npx wrapper in
+  # ~/.local/bin (which the worker PATH already ranks early). Node is already in
+  # hosts/max/packages.nix.
+  safeChainBin = pkgs.writeShellScriptBin "safe-chain" ''
+    exec ${pkgs.nodejs}/bin/npx -y @aikidosec/safe-chain@${safeChainVersion} "$@"
+  '';
+
 in
 {
-  home.packages = [ kiroPatchScript ];
+  home.packages = [ kiroPatchScript safeChainBin ];
+
+  # NOTE: we deliberately do NOT put ~/.safe-chain/shims on home.sessionPath.
+  # That dir contains shims for RUN-path tools too (npx, node, python, python3,
+  # uvx, …); putting the whole dir on PATH shadows them for every process,
+  # including MCP servers that launch via `npx` — which broke MCP startup after
+  # the first rebuild (safe-chain proxies every npx launch). Instead the
+  # activation step below symlinks ONLY the install-verb shims into ~/.local/bin,
+  # so package installs are gated but tool execution (MCP launch) is untouched.
 
   # Deploy steering files and skills (agent JSONs stay imperative — see note above)
   home.file = steeringFiles // skillFiles;
@@ -135,5 +158,48 @@ in
   # Activation script for skill symlinks (can't use home.file for mutable targets)
   home.activation.kiroCrewSkillSymlinks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${skillSymlinks}
+  '';
+
+  # Safe Chain Option B (Tech Radar Vol 35 #99): generate the setup-ci shims +
+  # local CA at activation (needs network; fails soft offline), then symlink ONLY
+  # the INSTALL-verb shims into ~/.local/bin (which the worker PATH ranks ahead of
+  # the real npm/uv), so package installs are gated but tool EXECUTION is not.
+  #
+  # Why an allowlist: a shim for a run-path tool (npx, node, python, python3, and
+  # the run-variants uvx/pnpx/bunx/rushx) routes EVERY invocation through the
+  # safe-chain proxy — including MCP servers that launch via `npx` on each start.
+  # That broke MCP after the first rebuild. So we shim only the commands that
+  # actually INSTALL packages and leave the runtimes alone. `npx` is excluded on
+  # purpose: it is the MCP launch path, and `npm install` already covers the real
+  # install route. The CA keypair is machine-local (never vendored into the Nix
+  # store), which is why this is an activation step, not a home.file of shims.
+  #
+  # Post-rebuild verify (install still blocked, MCP launch unaffected):
+  #   command -v npx node python3            # real binaries, NOT ~/.local/bin shims
+  #   command -v npm uv pip                  # ~/.local/bin shims (install gating on)
+  #   sh -c 'cd $(mktemp -d) && npm init -y >/dev/null && npm install safe-chain-test --no-save'  # BLOCKED
+  #   sh -c 'cd $(mktemp -d) && npm init -y >/dev/null && npm install left-pad --no-save'         # installs
+  home.activation.safeChainShims = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    export PATH="${pkgs.nodejs}/bin:$PATH"
+    if ${pkgs.nodejs}/bin/npx -y @aikidosec/safe-chain@${safeChainVersion} setup-ci; then
+      shims="$HOME/.safe-chain/shims"
+      mkdir -p "$HOME/.local/bin"
+      # INSTALL-verb allowlist only — NOT npx/node/python/python3/uvx/pnpx/bunx/rushx
+      # (those are run-path tools MCP servers launch through; shimming them breaks MCP).
+      for name in npm pip pip3 uv pnpm yarn poetry pdm pipx bun; do
+        if [ -e "$shims/$name" ]; then
+          ln -sfn "$shims/$name" "$HOME/.local/bin/$name"
+        fi
+      done
+      # Remove any stale run-path shim symlinks a previous (shim-everything) build left behind.
+      for name in npx node python python3 uvx pnpx bunx rush rushx; do
+        if [ -L "$HOME/.local/bin/$name" ] && [ "$(readlink "$HOME/.local/bin/$name")" = "$shims/$name" ]; then
+          rm -f "$HOME/.local/bin/$name"
+        fi
+      done
+    else
+      echo "[safe-chain] setup-ci failed (offline rebuild? npm unreachable?) — " \
+           "leaving existing shims in place; agent protection may be stale." >&2
+    fi
   '';
 }
